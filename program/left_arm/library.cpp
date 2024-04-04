@@ -30,16 +30,27 @@ void Motor::move(int degree){
     int current_deg = Motor::current();
     if (current_deg > deg - 2){
         while(current_deg > deg - 2 ) {
-            if 
-            digitalWrite(en, speed);
-            digitalWrite(in1, LOW);
-            digitalWrite(in2, HIGH);
+            if (direction == 1){
+                digitalWrite(en, speed);
+                digitalWrite(in1, LOW);
+                digitalWrite(in2, HIGH);
+            } else if (direction == -1){
+                digitalWrite(en, speed);
+                digitalWrite(in1, HIGH);
+                digitalWrite(in2, LOW);
+            }
         }
     } else if (current_deg < degree + 2){
         while(current_def < deg + 2){
-            digitalWrite(en, speed);
-            digitalWrite(in1, HIGH);
-            digitalWrite(in2, LOW);
+            if (direction == 1){
+                digitalWrite(en, speed);
+                digitalWrite(in1, HIGH);
+                digitalWrite(in2, LOW);
+            } else if (direction == -1){
+                digitalWrite(en, speed);
+                digitalWrite(in1, LOW);
+                digitalWrite(in2, HIGH);
+            }
         }
     } else {
         Motor::stopMotor();
