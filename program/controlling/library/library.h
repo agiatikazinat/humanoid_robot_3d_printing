@@ -62,19 +62,12 @@ class Head{
         Servo side_eye, mouth, up_eye, head, neck, side_neck;
     public:
         Head(int side_eye, int mouth, int up_eye, int head, int  neck, int side_neck);
-        void turn_left();
-        void turn_right();
-        void look_center(); 
-        void open_mouth();
-        void close_mouth();
-        void look_right();
-        void look_left();
-        void look_up();
-        void look_down();
-        void tilt_left();
-        void tilt_right();
-        void tilt_forward();
-        void tilt_backward();
+        void head(int degree);
+        void mouth(int degree);
+        void side_eye(int degree);
+        void up_eye(int degree);
+        void neck_side(int degree);
+        void neck(int degree);
 
 }
 

@@ -203,6 +203,43 @@ Head::Head(int side_eye, int mouth, int up_eye, int head, int neck, int side_nec
     side_neck.attach(side_neck);
 }
 
-void Head::look_left(){
-    
+void Head::head(int degree){
+    // ... - ... is turn left 
+    // ... - ... is turn right 
+    // ... is center
+    head.write(degree);  
+}
+
+void Head::neck(int degree){
+    // ... - ...  is up 
+    // ... - ... is down 
+    // ... is center
+    neck.write(degree);
+}
+
+void Head::mouth(int degree) {
+    // ... - ... is open
+    // ... - ... is close
+    mouth.write(degree);
+}
+
+void Head::side_eye(int degree){
+    // ... - ... is left
+    // ... - ... is right
+    // ... is center
+    side_eye.write(degree);
+}
+
+void Head::up_eye(int degree){
+    // ... - ... is up 
+    // ... - ... is down 
+    // ... is center 
+    up_eye.write(degree);
+}
+
+void Head::neck_side(int degree){
+    // ... - ... is left tilt
+    // ... - ... is right tilt 
+    // ... is center
+    side_neck.write(degree);
 }
