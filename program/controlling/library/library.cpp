@@ -32,10 +32,18 @@ void Motor::setSpeed(int speed){
     speed = speed;
 }
 
-void Motor::move(int degree){
-    int current_deg = Motor::current();
-    if (current_deg > deg - 2){
-        while(current_deg > deg - 2 ) {
+void Motor::setMaxLimit(int max){
+    _max_limit = max;
+}
+
+void Motor::setMinLimit(int min){
+    _min_limit = min;
+}
+
+void Motor::move(int deg){
+    int current_deg = current();
+    if (current_deg > deg + 2 ){
+        while(current_deg > deg + 2 && current_deg > _min_limit ) {
             if (direction == 1){
                 digitalWrite(en, speed);
                 digitalWrite(in1, LOW);
@@ -45,10 +53,11 @@ void Motor::move(int degree){
                 digitalWrite(in1, HIGH);
                 digitalWrite(in2, LOW);
             }
+            current_deg = current();
         }
         stopMotor();
-    } else if (current_deg < degree + 2){
-        while(current_def < deg + 2){
+    } else if (current_deg < deg - 2){
+        while(current_def < deg - 2 && current_def < _max_limit) {
             if (direction == 1){
                 digitalWrite(en, speed);
                 digitalWrite(in1, HIGH);
@@ -58,11 +67,14 @@ void Motor::move(int degree){
                 digitalWrite(in1, LOW);
                 digitalWrite(in2, HIGH);
             }
+            current_deg = current();
         }
     } else {
         stopMotor();
     }
 }
+
+
 
 // HAND SET UP ===================================================================================================
 
@@ -168,24 +180,34 @@ int Shield_Motor::current(){
     return _current;
 }
 
-void Shield_Motor::move(int degree){
+void Shield_Motor::setMinLimit(int min){
+    _min_limit = min;
+}
+
+void Shield_Motor::setMaxLimit(int max){
+    _max_limit = max;
+}
+
+void Shield_Motor::move(int deg){
     int current_deg = current();
-    if (current_deg > deg - _delta){
-        while(current_deg > deg - _delta ) {
+    if (current_deg > deg + _delta && current_deg > _min_limit) {
+        while(current_deg > deg + _delta ) {
             if (direction == 1){
                 dcMotor.run(FORWARD);
             } else if (direction == -1){
                 dcMotor.run(BACKWARD);
             }
+            current_deg = current();
         }
         dcMotor.run(RELEASE);
-    } else if (current_deg < degree + _delta){
-        while(current_def < deg + _delta){
+    } else if (current_deg < deg - _delta){
+        while(current_deg < deg - _delta && current_deg < _max_limit){
             if (direction == 1){
                 dcMotor.run(BACKWARD);
             } else if (direction == -1){
                 dcMotor.run(FORWARD);
             }
+            current_deg  = current();
         }
         dcMotor.run(RELEASE);
     } else {
@@ -228,6 +250,14 @@ void Head::side_eye(int degree){
     // ... - ... is right
     // ... is center
     side_eye.write(degree);
+}
+
+void Head::setMaxLimit(int max){
+    _max_limit = max;
+}
+
+void Head::setMinLimit(int min){
+    _min_limit  = min;
 }
 
 void Head::up_eye(int degree){

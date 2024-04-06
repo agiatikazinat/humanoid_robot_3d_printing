@@ -15,6 +15,7 @@ class Motor{
         int speed;
         int const delta = 2;
         int _direction = 1;
+        int _min_limit, _max_limit;
 
     public:
         Motor(int en, int in1, int in2, int potPin);
@@ -23,6 +24,8 @@ class Motor{
         void setSpeed(int speed);
         void stopMotor();
         void setDirection(int direct);
+        void setMinLimit(int min);
+        void setMaxLimit(int max);
 };
 
 class Shield_Motor{
@@ -34,6 +37,7 @@ class Shield_Motor{
         int _delta = 2;
         int _current;
         int _speed;
+        int _min_limit, _max_limit;
 
     public:
         Shield_Motor(int dc_motor, int potPin);
@@ -41,7 +45,9 @@ class Shield_Motor{
         void setDirection(int direct);
         void setSpeed(int  speed);
         int current();
-        
+        void setMinLimit(int min);
+        void setMaxLimit(int max);
+
 };
 
 class Hand{
@@ -60,6 +66,7 @@ class Hand{
 
 class Head{
     private:
+        int _min_limit, _max_limit;
         Servo side_eye, mouth, up_eye, head, neck, side_neck;
     public:
         Head(int side_eye, int mouth, int up_eye, int head, int  neck, int side_neck);
@@ -69,6 +76,8 @@ class Head{
         void up_eye(int degree);
         void neck_side(int degree);
         void neck(int degree);
+        void setMaxLimit(int max);
+        void setMinLimit(int min);
 
 };
 

@@ -30,6 +30,53 @@ void loop() {
     }
 
 
+    // FOR LEFT HAND ============================================================
+    if ( motorName == "left_hand" && method == "open"){
+      left_hand.open();
+    } 
+    else if (motorName == "left_hand" && method == "close"){
+      left_hand.close();
+    }
+    else if (motorName == "left_hand" && method == "finger_moving"){
+      left_hand.finger_move(param);
+    }
+    else if (motorName == "left_hand" && method == "wrist"){
+      left_hand.wrist(param.toInt());
+    }
+
+    // FOR RIGHT HAND ============================================================
+    if ( motorName == "right_hand" && method == "open"){
+      right_hand.open();
+    } 
+    else if (motorName == "right_hand" && method == "close"){
+      right_hand.close();
+    }
+    else if (motorName == "right_hand" && method == "finger_moving"){
+      right_hand.finger_move(param);
+    }
+    else if (motorName == "right_hand" && method == "wrist"){
+      right_hand.wrist(param.toInt());
+    }
+
+    // FOR HEAD ==================================================================
+    if (motorName == "head" && method == "head"){
+      head.head(param.toInt());
+    }
+    else if (motorName == "head" && method == "mouth"){
+      head.mouth(param.toInt());
+    }
+    else if (motorName == "head" && method == "side_eye"){
+      head.side_eye(param.toInt());
+    }
+    else if (motorName == "head" && method == "up_eye"){
+      head.up_eye(param.toInt());
+    }
+    else if (motorName == "head" && method == "neck_side"){
+      head.neck_side(param.toInt());
+    }
+    else if (motorName == "head" && method == "neck"){
+      head.neck(param.toInt());
+    }
 
   }
 }
