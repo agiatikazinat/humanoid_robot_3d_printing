@@ -41,6 +41,7 @@ class Shield_Motor{
         void setDirection(int direct);
         void setSpeed(int  speed);
         int current();
+        
 };
 
 class Hand{
@@ -69,7 +70,9 @@ class Head{
         void neck_side(int degree);
         void neck(int degree);
 
-}
+};
+
+
 
 
 

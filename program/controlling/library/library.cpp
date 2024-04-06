@@ -19,7 +19,7 @@ int Motor::current(){
     return current;
 }
 
-void setDirection(int direct){
+void Motor::setDirection(int direct){
     _direction = direct;
 }
 
@@ -46,7 +46,7 @@ void Motor::move(int degree){
                 digitalWrite(in2, LOW);
             }
         }
-        Motor::stopMotor();
+        stopMotor();
     } else if (current_deg < degree + 2){
         while(current_def < deg + 2){
             if (direction == 1){
@@ -170,8 +170,8 @@ int Shield_Motor::current(){
 
 void Shield_Motor::move(int degree){
     int current_deg = current();
-    if (current_deg > deg - 2){
-        while(current_deg > deg - 2 ) {
+    if (current_deg > deg - _delta){
+        while(current_deg > deg - _delta ) {
             if (direction == 1){
                 dcMotor.run(FORWARD);
             } else if (direction == -1){
@@ -179,8 +179,8 @@ void Shield_Motor::move(int degree){
             }
         }
         dcMotor.run(RELEASE);
-    } else if (current_deg < degree + 2){
-        while(current_def < deg + 2){
+    } else if (current_deg < degree + _delta){
+        while(current_def < deg + _delta){
             if (direction == 1){
                 dcMotor.run(BACKWARD);
             } else if (direction == -1){

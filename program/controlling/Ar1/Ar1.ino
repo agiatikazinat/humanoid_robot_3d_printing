@@ -12,5 +12,24 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  if (Serial.available() > 0){
+    // get the command from controlling program 
+    String command = Serial.readStringUntil('\n');
+    
+    // split the command
+    StringSplitter *splitter = new StringSplitter(command, ' ');
 
+    int itemCount = splitter->getItemCount();
+
+    String motorName = splitter->getItemAtIndex(0);
+    String method = splitter->getItemAtIndex(1);
+    String param;
+
+    if (itemCount == 3){
+      param = splitter->getItemAtIndex(2); 
+    }
+
+
+
+  }
 }

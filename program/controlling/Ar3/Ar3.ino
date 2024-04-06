@@ -9,10 +9,10 @@
 
 void setup() {
   Serial.begin(9600);
-  left_shoulder_y = Motor(2, 3, 4, POS_LSY);
-  left_shoulder_z = Motor(7, 6, 5, POS_LSZ);
-  left_shoulder_x = Motor(8, 9, 10, POS_LSX);
-  left_bicept = Motor(13, 12, 11, POS_LBI);
+  left_shoulder_y = Shield_Motor(2, POS_LSY);
+  left_shoulder_z = Shield_Motor(3, POS_LSZ);
+  left_shoulder_x = Shield_Motor(1, POS_LSX);
+  left_bicept = Shield_Motor(4, POS_LBI);
 
 }
 
