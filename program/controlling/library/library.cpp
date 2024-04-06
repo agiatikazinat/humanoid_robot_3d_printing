@@ -1,6 +1,6 @@
 #include "library.h"
 #include <Servo.h>
-
+#include <AFMotor.h>
 // MOTOR SET UP =============================================================================================
 
 Motor::Motor(int en, int in1, int in2, int potPin){
@@ -17,6 +17,10 @@ Motor::Motor(int en, int in1, int in2, int potPin){
 int Motor::current(){
     current = map(analogRead(potPin), 0, 1023, 0, 270);  
     return current;
+}
+
+void setDirection(int direct){
+    _direction = direct;
 }
 
 void Motor::stopMotor(){
@@ -42,6 +46,7 @@ void Motor::move(int degree){
                 digitalWrite(in2, LOW);
             }
         }
+        Motor::stopMotor();
     } else if (current_deg < degree + 2){
         while(current_def < deg + 2){
             if (direction == 1){
@@ -55,7 +60,7 @@ void Motor::move(int degree){
             }
         }
     } else {
-        Motor::stopMotor();
+        stopMotor();
     }
 }
 
@@ -144,3 +149,48 @@ void Hand::wrist(int degree){
     wrist.write(degree);
 }
 
+// SHIELD MOTOR  CONTROL FUNCTIONS //////////////////////////////////////////////////////////////////////////
+Shield_Motor::Shield_Motor(int dc_motor, int potPin){
+    _dc_motor = dc_motor;
+    _potPin = potPin;
+    dcMotor = AF_DCMotor(_dc_motor);
+}
+
+void Shield_Motor::setDirection(int direct){
+    _direction = direct;
+}
+
+void  Shield_Motor::setSpeed(int speed){
+    _speed = speed;
+    dcMotor.setSpeed(_speed) ;  
+}
+
+int Shield_Motor::current(){
+    _current = map(analogRead(_potPin), 0, 1023, 0, 270);  
+    return _current;
+}
+
+void Shield_Motor::move(int degree){
+    int current_deg = current();
+    if (current_deg > deg - 2){
+        while(current_deg > deg - 2 ) {
+            if (direction == 1){
+                dcMotor.run(FORWARD);
+            } else if (direction == -1){
+                dcMotor.run(BACKWARD);
+            }
+        }
+        dcMotor.run(RELEASE);
+    } else if (current_deg < degree + 2){
+        while(current_def < deg + 2){
+            if (direction == 1){
+                dcMotor.run(BACKWARD);
+            } else if (direction == -1){
+                dcMotor.run(FORWARD);
+            }
+        }
+        dcMotor.run(RELEASE);
+    } else {
+        dcMotor.run(RELEASE); 
+    }
+}

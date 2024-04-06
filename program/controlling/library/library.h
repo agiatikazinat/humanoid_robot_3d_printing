@@ -14,7 +14,7 @@ class Motor{
         int current;
         int speed;
         int const delta = 2;
-        int direction = 1;
+        int _direction = 1;
 
     public:
         Motor(int en, int in1, int in2, int potPin);
@@ -22,6 +22,25 @@ class Motor{
         void move(int degree);
         void setSpeed(int speed);
         void stopMotor();
+        void setDirection(int direct);
+};
+
+class Shield_Motor{
+    private:
+        int _dc_motor;
+        AF_DCMotor dcMotor;
+        int _direction = 1;
+        int _potPin;
+        int _delta = 2;
+        int _current;
+        int _speed;
+
+    public:
+        Shield_Motor(int dc_motor, int potPin);
+        void move(int degree);
+        void setDirection(int direct);
+        void setSpeed(int  speed);
+        int current();
 };
 
 class Hand{

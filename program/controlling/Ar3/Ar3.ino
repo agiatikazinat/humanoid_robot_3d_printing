@@ -31,6 +31,10 @@ void loop() {
     String method = splitter->getItemAtIndex(1);
     String param;
 
+    if (itemCount == 3){
+      param = splitter->getItemAtIndex(2); 
+    }
+
     // FOR LEFT SHOULDER X ===============================================
     if (motorName == "left_shoulder_x" && method == "current"){
       Serial.println(left_shoulder_x.current());
@@ -46,10 +50,6 @@ void loop() {
     }
 
     // FOR LEFT SHOULDER Y ===============================================
-    if (itemCount == 3){
-      param = splitter->getItemAtIndex(2); 
-    }
-
     if (motorName == "left_shoulder_y" && method == "current"){
       Serial.println(left_shoulder_y.current());
     }
