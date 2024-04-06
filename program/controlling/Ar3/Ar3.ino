@@ -1,5 +1,4 @@
 #include <Servo.h>
-#include <bits/stdc++.h>
 #include "StringSplitter.h"
 #include "~/Document/Agiat_Ikazinat/program/controlling/library/library.h"
 

@@ -45,12 +45,7 @@ class Shield_Motor{
 
 class Hand{
     private:
-        int thumb;
-        int index;
-        int middle;
-        int ring;
-        int pinky;
-        int wrist;
+        Servo thumb, index, middle, ring, pinky, wrist; 
         int const delta;
         int direction = 1;
 
@@ -62,6 +57,26 @@ class Hand{
         void wrist(int degree);
 };
 
+class Head{
+    private:
+        Servo side_eye, mouth, up_eye, head, neck, side_neck;
+    public:
+        Head(int side_eye, int mouth, int up_eye, int head, int  neck, int side_neck);
+        void turn_left();
+        void turn_right();
+        void look_center(); 
+        void open_mouth();
+        void close_mouth();
+        void look_right();
+        void look_left();
+        void look_up();
+        void look_down();
+        void tilt_left();
+        void tilt_right();
+        void tilt_forward();
+        void tilt_backward();
+
+}
 
 
 

@@ -68,8 +68,6 @@ void Motor::move(int degree){
 
 Hand::Hand(int thumb, int index, int middle, int ring, int pinky, int wrist){
 
-    Servo thumb, index, middle, ring, pinky, wrist; 
-
     thumb.attach(thumb);
     index.attach(index);
     middle.attach(middle);
@@ -193,4 +191,18 @@ void Shield_Motor::move(int degree){
     } else {
         dcMotor.run(RELEASE); 
     }
+}
+
+// HEAD SET UP ===============================================================================================
+Head::Head(int side_eye, int mouth, int up_eye, int head, int neck, int side_neck){
+    side_eye.attach(side_eye);
+    mouth.attach(mouth);
+    up_eye.attach(up_eye);
+    neck.attach(neck);
+    head.attach(head);
+    side_neck.attach(side_neck);
+}
+
+void Head::look_left(){
+    
 }
