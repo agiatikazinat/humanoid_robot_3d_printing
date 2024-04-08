@@ -5,7 +5,7 @@
 #define POS_LSX A0;
 #define POS_LSY A1;
 #define POS_LSZ A2;
-#define POS_LBI A34;
+#define POS_LBI A3;
 
 void setup() {
   Serial.begin(9600);
