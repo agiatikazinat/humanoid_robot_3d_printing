@@ -2,10 +2,10 @@
 #include "StringSplitter.h"
 #include "~/Document/Agiat_Ikazinat/program/controlling/library/library.h"
 
-#define POS_LSY A0;
-#define POS_LSX A1;
-#define POS_LSZ A3;
-#define POS_LBI A2;
+#define POS_LSX A0;
+#define POS_LSY A1;
+#define POS_LSZ A2;
+#define POS_LBI A34;
 
 void setup() {
   Serial.begin(9600);
