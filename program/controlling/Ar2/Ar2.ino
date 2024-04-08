@@ -1,37 +1,39 @@
 #include <Servo.h>
 #include "StringSplitter.h"
-#include "~/Document/Agiat_Ikazinat/program/controlling/library/library.h"
+#include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.h"
 #include <AFMotor.h>
 
 
-#define POS_RAF A0; //Right Ankle Forward
-#define POS_RK A1; // Right Knee
-#define POS_LK A2; //  Left Knee 
-#define POS_LX A3; // Left X
-#define POS_RX A4; //  Right X  
-#define POS_LZ A5; // Left Z
-#define POS_RSX A6; //  Right Shoulder X
-#define POS_RY A7; // Right Y
-#define POS_RZ A8; // Right Z
-#define POS_LY A9; // Left  Y
-#define POS_LAF A10; // Left Ankle Forward
-#define POS_RA A11; // Right Ankle
-#define POS_LA A12; //  Left Ankle
-#define POS_RSY A13; // Right Shoulder Y
-#define POS_RB A14; // Right Bicept
-#define POS_RSZ A15;  //Right Shoulder Z-axis
+#define POS_RAF A0 //Right Ankle Forward
+#define POS_RK A1 // Right Knee
+#define POS_LK A2 //  Left Knee 
+#define POS_LX A3 // Left X
+#define POS_RX A4 //  Right X  
+#define POS_LZ A5 // Left Z
+#define POS_RSX A6 //  Right Shoulder X
+#define POS_RY A7 // Right Y
+#define POS_RZ A8 // Right Z
+#define POS_LY A9 // Left  Y
+#define POS_LAF A10 // Left Ankle Forward
+#define POS_RA A11 // Right Ankle
+#define POS_LA A12 //  Left Ankle
+#define POS_RSY A13 // Right Shoulder Y
+#define POS_RB A14 // Right Bicept
+#define POS_RSZ A15  //Right Shoulder Z-axis
+
+Shield_Motor right_shoulder_x(4, POS_RSX);
+Shield_Motor right_shoulder_y(3, POS_RSY);
+Shield_Motor right_shoulder_z(1, POS_RSZ);
+Shield_Motor right_bicept(2, POS_RB);
+
+Motor right_forward_ankle(21, 20, 19, POS_RAF);
+Motor right_knee(16, 17, 18, POS_RK);
+
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(14400);
 
-  Shield_Motor right_shoulder_x(4, POS_RSX);
-  Shield_Motor right_shoulder_y(3, POS_RSY);
-  Shield_Motor right_shoulder_z(1, POS_RSZ);
-  Shield_Motor right_bicept(2, POS_RB);
-
-  right_forward_ankle = Motor(21, 20, 19, POS_RAF);
-  right_knee = Motor(16, 17, 18, POS_RK);
   
   right_x = Motor(, , , POS_RX);
   right_y = Motor(, , , POS_RY);
