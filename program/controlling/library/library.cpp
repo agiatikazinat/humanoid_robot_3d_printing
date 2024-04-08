@@ -1,5 +1,4 @@
 #include "library.h"
-#include <Servo.h>
 #include <AFMotor.h>
 // MOTOR SET UP =============================================================================================
 
@@ -15,7 +14,7 @@ Motor::Motor(int en, int in1, int in2, int potPin){
     pinMode(potPin, INPUT);
 }    
 
-int Motor::current(){
+int Motor::current_deg(){
     current = map(analogRead(potPin), 0, 1023, 0, 270);  
     return current;
 }
@@ -42,7 +41,7 @@ void Motor::setMinLimit(int min){
 }
 
 void Motor::move(int deg){
-    int current_deg = current();
+    int current_deg = current_deg();
     if (current_deg > deg + 2 ){
         while(current_deg > deg + 2 && current_deg > _min_limit ) {
             if (direction == 1){
@@ -156,7 +155,7 @@ void Hand::finger_moving(string finger){
 
 }
 
-void Hand::wrist(int degree){
+void Hand::servo_wrist(int degree){
     wrist.write(degree);
 }
 
@@ -187,6 +186,10 @@ void Shield_Motor::setMinLimit(int min){
 
 void Shield_Motor::setMaxLimit(int max){
     _max_limit = max;
+}
+
+void Shield_Motor::stopMotor(){
+    dcMotor.run(RELEASE);
 }
 
 void Shield_Motor::move(int deg){
@@ -226,27 +229,27 @@ Head::Head(int side_eye, int mouth, int up_eye, int head, int neck, int side_nec
     side_neck.attach(side_neck);
 }
 
-void Head::head(int degree){
+void Head::servo_head(int degree){
     // ... - ... is turn left 
     // ... - ... is turn right 
     // ... is center
     head.write(degree);  
 }
 
-void Head::neck(int degree){
+void Head::servo_neck(int degree){
     // ... - ...  is up 
     // ... - ... is down 
     // ... is center
     neck.write(degree);
 }
 
-void Head::mouth(int degree) {
+void Head::servo_mouth(int degree) {
     // ... - ... is open
     // ... - ... is close
     mouth.write(degree);
 }
 
-void Head::side_eye(int degree){
+void Head::servo_side_eye(int degree){
     // ... - ... is left
     // ... - ... is right
     // ... is center
@@ -261,14 +264,14 @@ void Head::setMinLimit(int min){
     _min_limit  = min;
 }
 
-void Head::up_eye(int degree){
+void Head::servo_up_eye(int degree){
     // ... - ... is up 
     // ... - ... is down 
     // ... is center 
     up_eye.write(degree);
 }
 
-void Head::neck_side(int degree){
+void Head::servo_side_neck(int degree){
     // ... - ... is left tilt
     // ... - ... is right tilt 
     // ... is center

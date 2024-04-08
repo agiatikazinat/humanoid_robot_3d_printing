@@ -1,6 +1,8 @@
 #include <Servo.h>
 #include "StringSplitter.h"
 #include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.h"
+#include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.cpp"
+
 
 #define POS_LSX A0
 #define POS_LSY A1
@@ -25,18 +27,24 @@ void loop() {
     String command = Serial.readStringUntil('\n');
     
     // split the command
-    StringSplitter *splitter = new StringSplitter(command, ' ');
+    char command_1[command.length()];
+    command.toCharArray(command_1, command.length() + 1);
 
-    int itemCount = splitter->getItemCount();
+     char* v[3];
+     int i = 0;
+     char* p;
+     p = strtok(command_1, " ");
+     while(p && i < 3){
+      v[i] = p;
+      p = strtok(NULL, " ");
+      i++;
+     }
+     String motorName = v[0];
+     String method = v[1];
+     String param = v[2];
 
-    String motorName = splitter->getItemAtIndex(0);
-    String method = splitter->getItemAtIndex(1);
-    String param;
 
-    if (itemCount == 3){
-      param = splitter->getItemAtIndex(2); 
-    }
-
+    
     // FOR LEFT SHOULDER X ===============================================
     if (motorName == "left_shoulder_x" && method == "current"){
       Serial.println(left_shoulder_x.current());

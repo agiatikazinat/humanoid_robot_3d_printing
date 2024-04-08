@@ -19,7 +19,7 @@ class Motor{
 
     public:
         Motor(int en, int in1, int in2, int potPin);
-        int current();
+        int current_deg();
         void move(int degree);
         void setSpeed(int speed);
         void stopMotor();
@@ -47,6 +47,7 @@ class Shield_Motor{
         int current();
         void setMinLimit(int min);
         void setMaxLimit(int max);
+        void stopMotor();
 
 };
 
@@ -60,22 +61,23 @@ class Hand{
         Hand(int thumb, int index, int middle, int ring, int pinky, int wrist);
         void open();
         void close();
-        void finger_moving(string finger);
-        void wrist(int degree);
+        void finger_moving(String finger);
+        void servo_wrist(int degree);
 };
 
 class Head{
     private:
         int _min_limit, _max_limit;
-        Servo side_eye, mouth, up_eye, head, neck, side_neck;
     public:
+        Servo side_eye, mouth, up_eye, head, neck, side_neck;
+
         Head(int side_eye, int mouth, int up_eye, int head, int  neck, int side_neck);
-        void head(int degree);
-        void mouth(int degree);
-        void side_eye(int degree);
-        void up_eye(int degree);
-        void neck_side(int degree);
-        void neck(int degree);
+        void servo_head(int degree);
+        void servo_mouth(int degree);
+        void servo_side_eye(int degree);
+        void servo_up_eye(int degree);
+        void servo_side_neck(int degree);
+        void servo_neck(int degree);
         void setMaxLimit(int max);
         void setMinLimit(int min);
 
