@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/agiat_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/agiat_ws/install -G Unix Makefiles
