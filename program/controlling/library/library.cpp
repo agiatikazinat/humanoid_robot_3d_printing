@@ -14,6 +14,7 @@ Motor::Motor(int en, int in1, int in2, int potPin){
     pinMode(in2, OUTPUT);
     pinMode(potPin, INPUT);
 }    
+
 int Motor::current(){
     current = map(analogRead(potPin), 0, 1023, 0, 270);  
     return current;

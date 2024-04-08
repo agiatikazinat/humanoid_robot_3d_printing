@@ -1,18 +1,21 @@
 #include <Servo.h>
 #include "StringSplitter.h"
-#include "~/Document/Agiat_Ikazinat/program/controlling/library/library.h"
+#include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.h"
 
-#define POS_LSX A0;
-#define POS_LSY A1;
-#define POS_LSZ A2;
-#define POS_LBI A3;
+#define POS_LSX A0
+#define POS_LSY A1
+#define POS_LSZ A2
+#define POS_LBI A3
+
+
+Shield_Motor left_shoulder_y(2, POS_LSY);
+Shield_Motor left_shoulder_z(3, POS_LSZ);
+Shield_Motor left_shoulder_x(1, POS_LSX);
+Shield_Motor left_bicept(4, POS_LBI);
+
 
 void setup() {
   Serial.begin(9600);
-  left_shoulder_y = Shield_Motor(2, POS_LSY);
-  left_shoulder_z = Shield_Motor(3, POS_LSZ);
-  left_shoulder_x = Shield_Motor(1, POS_LSX);
-  left_bicept = Shield_Motor(4, POS_LBI);
 
 }
 
