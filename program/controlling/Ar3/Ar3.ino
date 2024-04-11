@@ -1,11 +1,11 @@
 #include "StringSplitter.h"
-#include "library.h"
+#include "agiat_library.h"
 
 
-#define POS_LSX A0
-#define POS_LSY A1
-#define POS_LSZ A2
-#define POS_LBI A3
+#define POS_LSX A1
+#define POS_LSY A0
+#define POS_LSZ A3
+#define POS_LBI A1
 
 
 Shield_Motor left_shoulder_y(2, POS_LSY);

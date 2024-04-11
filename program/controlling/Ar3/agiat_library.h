@@ -1,5 +1,5 @@
-#ifndef LIBRARY_h
-#define LIBRARY_h 
+#ifndef AGIAT_LIBRARY_h
+#define AGIAT_LIBRARY_h 
 
 #include <Arduino.h>
 #include <Servo.h>

@@ -1,5 +1,5 @@
 #include "StringSplitter.h"
-#include "library.h"
+#include "agiat_library.h"
 
 Hand left_hand(40, 41, 44, 45, 43, 42);
 Hand right_hand(34, 33, 32, 31, 30, 29);
