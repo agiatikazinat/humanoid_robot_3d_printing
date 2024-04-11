@@ -1,6 +1,6 @@
 
 #include "StringSplitter.h"
-#include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.h"
+#include "library.h"
 
 
 
