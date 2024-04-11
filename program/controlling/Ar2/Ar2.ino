@@ -26,29 +26,28 @@ Shield_Motor right_shoulder_y(3, POS_RSY);
 Shield_Motor right_shoulder_z(1, POS_RSZ);
 Shield_Motor right_bicept(2, POS_RB);
 
-Motor right_forward_ankle(21, 20, 19, POS_RAF);
-Motor right_knee(16, 17, 18, POS_RK);
+Motor right_knee(21, 20, 19, POS_RAF);
+Motor right_forward_ankle(16, 17, 18, POS_RK);
 
+Motor right_x(22, 24, 26, POS_RX);
+Motor right_y(32, 30, 28, POS_RY);
+
+Motor left_z(23, 25, 27, POS_LZ);
+Motor right_z(33, 31, 29, POS_RZ);
+
+Motor left_x(35, 37, 39, POS_LX);
+Motor left_y(45, 43, 41, POS_LY);
+
+Motor left_forward_ankle(34, 36, 38, POS_LAF);
+Motor left_knee(44, 42, 40, POS_LK);
+
+Motor left_side_ankle(51, 49, 47, POS_LA);
+Motor right_side_ankle(46, 48, 50, POS_RA);
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(14400);
-
   
-  right_x = Motor(, , , POS_RX);
-  right_y = Motor(, , , POS_RY);
-
-  left_z = Motor(, , , POS_LZ);
-  right_z = Motor(, , , POS_RZ);
-
-  left_x = Motor(, , , POS_LX);
-  left_y = Motor(, , , POS_LY);
-
-  left_forward_ankle = Motor(, , , POS_LAF);
-  left_knee = Motor(, , , POS_LK);
-
-  left_side_ankle = Motor(, , , POS_LA);
-  right_side_ankle = Motor(, , , POS_RA);
 }
 
 void loop() {
@@ -58,30 +57,34 @@ void loop() {
     String command = Serial.readStringUntil('\n');
     
     // split the command
-    StringSplitter *splitter = new StringSplitter(command, ' ');
+    char command_1[command.length()];
+    command.toCharArray(command_1, command.length() + 1);
 
-    int itemCount = splitter->getItemCount();
-
-    String motorName = splitter->getItemAtIndex(0);
-    String method = splitter->getItemAtIndex(1);
-    String param;
-
-    if (itemCount == 3){
-      param = splitter->getItemAtIndex(2); 
-    }
+   char* v[3];
+   int i = 0;
+   char* p;
+   p = strtok(command_1, " ");
+   while(p && i < 3){
+    v[i] = p;
+    p = strtok(NULL, " ");
+    i++;
+   }
+   String motorName = v[0];
+   String method = v[1];
+   String param = v[2];
 
     // FOR RIGHT SHOULDER X ===================================================
     if (motorName == "right_shoulder_x" && method == "setDirection"){
       right_shoulder_x.setDirection(param.toInt());
     } 
     else if (motorName == "right_shoulder_x" && method == "setSpeed"){
-      right_shoulder_x.setSpeed(param.toInt());
+      right_shoulder_x.set_speed(param.toInt());
     }
     else if(motorName == "right_shoulder_x" && method == "current"){
       Serial.println(right_shoulder_x.current());
     }
     else if(motorName == "right_shoulder_x" && method == "move"){
-      right_shoulder_x.move(param.toInt());
+      right_shoulder_x.move_motor(param.toInt());
     }
 
     // FOR RIGHT SHOULDER Y ===================================================
@@ -89,13 +92,13 @@ void loop() {
       right_shoulder_y.setDirection(param.toInt());
     } 
     else if (motorName == "right_shoulder_y" && method == "setSpeed"){
-      right_shoulder_y.setSpeed(param.toInt());
+      right_shoulder_y.set_speed(param.toInt());
     }
     else if(motorName == "right_shoulder_y" && method == "current"){
       Serial.println(right_shoulder_y.current());
     }
     else if(motorName == "right_shoulder_y" && method == "move"){
-      right_shoulder_y.move(param.toInt());
+      right_shoulder_y.move_motor(param.toInt());
     }
 
     // FOR RIGHT SHOULDER Z ===================================================
@@ -103,13 +106,13 @@ void loop() {
       right_shoulder_z.setDirection(param.toInt());
     } 
     else if (motorName == "right_shoulder_z" && method == "setSpeed"){
-      right_shoulder_z.setSpeed(param.toInt());
+      right_shoulder_z.set_speed(param.toInt());
     }
     else if(motorName == "right_shoulder_z" && method == "current"){
       Serial.println(right_shoulder_z.current());
     }
     else if(motorName == "right_shoulder_z" && method == "move"){
-      right_shoulder_z.move(param.toInt());
+      right_shoulder_z.move_motor(param.toInt());
     }
 
     // FOR RIGHT BICEPT =======================================================
@@ -117,13 +120,13 @@ void loop() {
       right_bicept.setDirection(param.toInt());
     } 
     else if (motorName == "right_bicept" && method == "setSpeed"){
-      right_bicept.setSpeed(param.toInt());
+      right_bicept.set_speed(param.toInt());
     }
     else if(motorName == "right_bicept" && method == "current"){
       Serial.println(right_bicept.current());
     }
     else if(motorName == "right_bicept" && method == "move"){
-      right_bicept.move(param.toInt());
+      right_bicept.move_motor(param.toInt());
     }
 
     // FOR LEFT X =============================================================
@@ -131,13 +134,13 @@ void loop() {
       left_x.setDirection(param.toInt());
     } 
     else if (motorName == "left_x" && method == "setSpeed"){
-      left_x.setSpeed(param.toInt());
+      left_x.set_speed(param.toInt());
     }
     else if(motorName == "left_x" && method == "current"){
-      Serial.println(left_x.current());
+      Serial.println(left_x.current_deg());
     }
     else if(motorName == "left_x" && method == "move"){
-      left_x.move(param.toInt());
+      left_x.move_motor(param.toInt());
     }
 
     // FOR RIGHT X =============================================================
@@ -145,13 +148,13 @@ void loop() {
       right_x.setDirection(param.toInt());
     } 
     else if (motorName == "right_x" && method == "setSpeed"){
-      right_x.setSpeed(param.toInt());
+      right_x.set_speed(param.toInt());
     }
     else if(motorName == "right_x" && method == "current"){
-      Serial.println(right_x.current());
+      Serial.println(right_x.current_deg());
     }
     else if(motorName == "right_x" && method == "move"){
-      right_x.move(param.toInt());
+      right_x.move_motor(param.toInt());
     }
 
     // FOR LEFT Y =============================================================
@@ -159,13 +162,13 @@ void loop() {
       left_y.setDirection(param.toInt());
     } 
     else if (motorName == "left_y" && method == "setSpeed"){
-      left_y.setSpeed(param.toInt());
+      left_y.set_speed(param.toInt());
     }
     else if(motorName == "left_y" && method == "current"){
-      Serial.println(left_y.current());
+      Serial.println(left_y.current_deg());
     }
     else if(motorName == "left_y" && method == "move"){
-      left_y.move(param.toInt());
+      left_y.move_motor(param.toInt());
     }
 
     // FOR RIGHT Y =============================================================
@@ -173,13 +176,13 @@ void loop() {
       right_y.setDirection(param.toInt());
     } 
     else if (motorName == "right_y" && method == "setSpeed"){
-      right_y.setSpeed(param.toInt());
+      right_y.set_speed(param.toInt());
     }
     else if(motorName == "right_y" && method == "current"){
-      Serial.println(right_y.current());
+      Serial.println(right_y.current_deg());
     }
     else if(motorName == "right_y" && method == "move"){
-      right_y.move(param.toInt());
+      right_y.move_motor(param.toInt());
     }
 
     // FOR LEFT Z =============================================================
@@ -187,13 +190,13 @@ void loop() {
       left_z.setDirection(param.toInt());
     } 
     else if (motorName == "left_z" && method == "setSpeed"){
-      left_z.setSpeed(param.toInt());
+      left_z.set_speed(param.toInt());
     }
     else if(motorName == "left_z" && method == "current"){
-      Serial.println(left_z.current());
+      Serial.println(left_z.current_deg());
     }
     else if(motorName == "left_z" && method == "move"){
-      left_z.move(param.toInt());
+      left_z.move_motor(param.toInt());
     }
 
     // FOR RIGHT Z =============================================================
@@ -201,13 +204,13 @@ void loop() {
       right_z.setDirection(param.toInt());
     } 
     else if (motorName == "right_z" && method == "setSpeed"){
-      right_z.setSpeed(param.toInt());
+      right_z.set_speed(param.toInt());
     }
     else if(motorName == "right_z" && method == "current"){
-      Serial.println(right_z.current());
+      Serial.println(right_z.current_deg());
     }
     else if(motorName == "right_z" && method == "move"){
-      right_z.move(param.toInt());
+      right_z.move_motor(param.toInt());
     }
 
     // FOR RIGHT KNEE =============================================================
@@ -215,13 +218,13 @@ void loop() {
       right_knee.setDirection(param.toInt());
     } 
     else if (motorName == "right_knee" && method == "setSpeed"){
-      right_knee.setSpeed(param.toInt());
+      right_knee.set_speed(param.toInt());
     }
     else if(motorName == "right_knee" && method == "current"){
-      Serial.println(right_knee.current());
+      Serial.println(right_knee.current_deg());
     }
     else if(motorName == "right_knee" && method == "move"){
-      right_knee.move(param.toInt());
+      right_knee.move_motor(param.toInt());
     }
 
 
@@ -230,13 +233,13 @@ void loop() {
       left_knee.setDirection(param.toInt());
     } 
     else if (motorName == "left_knee" && method == "setSpeed"){
-      left_knee.setSpeed(param.toInt());
+      left_knee.set_speed(param.toInt());
     }
     else if(motorName == "left_knee" && method == "current"){
-      Serial.println(left_knee.current());
+      Serial.println(left_knee.current_deg());
     }
     else if(motorName == "left_knee" && method == "move"){
-      left_knee.move(param.toInt());
+      left_knee.move_motor(param.toInt());
     }
 
     // FOR LEFT FORWARD ANKLE =============================================================
@@ -244,13 +247,13 @@ void loop() {
       left_forward_ankle.setDirection(param.toInt());
     } 
     else if (motorName == "left_forward_ankle" && method == "setSpeed"){
-      left_forward_ankle.setSpeed(param.toInt());
+      left_forward_ankle.set_speed(param.toInt());
     }
     else if(motorName == "left_forward_ankle" && method == "current"){
-      Serial.println(left_forward_ankle.current());
+      Serial.println(left_forward_ankle.current_deg());
     }
     else if(motorName == "left_forward_ankle" && method == "move"){
-      left_forward_ankle.move(param.toInt());
+      left_forward_ankle.move_motor(param.toInt());
     }
 
     // FOR RIGHT FORWARD ANKLE =============================================================
@@ -258,13 +261,13 @@ void loop() {
       right_forward_ankle.setDirection(param.toInt());
     } 
     else if (motorName == "right_forward_ankle" && method == "setSpeed"){
-      right_forward_ankle.setSpeed(param.toInt());
+      right_forward_ankle.set_speed(param.toInt());
     }
     else if(motorName == "right_forward_ankle" && method == "current"){
-      Serial.println(right_forward_ankle.current());
+      Serial.println(right_forward_ankle.current_deg());
     }
     else if(motorName == "right_forward_ankle" && method == "move"){
-      right_forward_ankle.move(param.toInt());
+      right_forward_ankle.move_motor(param.toInt());
     }
 
     // FOR RIGHT SIDE ANKLE =============================================================
@@ -272,13 +275,13 @@ void loop() {
       right_side_ankle.setDirection(param.toInt());
     } 
     else if (motorName == "right_side_ankle" && method == "setSpeed"){
-      right_side_ankle.setSpeed(param.toInt());
+      right_side_ankle.set_speed(param.toInt());
     }
     else if(motorName == "right_side_ankle" && method == "current"){
-      Serial.println(right_side_ankle.current());
+      Serial.println(right_side_ankle.current_deg());
     }
     else if(motorName == "right_side_ankle" && method == "move"){
-      right_side_ankle.move(param.toInt());
+      right_side_ankle.move_motor(param.toInt());
     }
 
     // FOR LEFT SIDE ANKLE =============================================================
@@ -286,13 +289,13 @@ void loop() {
       left_side_ankle.setDirection(param.toInt());
     } 
     else if (motorName == "left_side_ankle" && method == "setSpeed"){
-      left_side_ankle.setSpeed(param.toInt());
+      left_side_ankle.set_speed(param.toInt());
     }
     else if(motorName == "left_side_ankle" && method == "current"){
-      Serial.println(left_side_ankle.current());
+      Serial.println(left_side_ankle.current_deg());
     }
     else if(motorName == "left_side_ankle" && method == "move"){
-      left_side_ankle.move(param.toInt());
+      left_side_ankle.move_motor(param.toInt());
     }
 
 
