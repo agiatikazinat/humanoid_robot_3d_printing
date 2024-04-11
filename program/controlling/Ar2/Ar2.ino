@@ -1,7 +1,7 @@
-#include <Servo.h>
+
 #include "StringSplitter.h"
 #include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.h"
-#include <AFMotor.h>
+
 
 
 #define POS_RAF A0 //Right Ankle Forward

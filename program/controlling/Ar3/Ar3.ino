@@ -1,7 +1,5 @@
-#include <Servo.h>
 #include "StringSplitter.h"
-#include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.h"
-#include "/home/ikazinatagiat/Documents/Agiat_Ikazinat/program/controlling/library/library.cpp"
+#include "library.h"
 
 
 #define POS_LSX A0
@@ -53,10 +51,10 @@ void loop() {
       left_shoulder_x.stopMotor();
     }
     else if (motorName == "left_shoulder_x" && method == "setSpeed"){
-      left_shoulder_x.setSpeed(param.toInt());
+      left_shoulder_x.set_speed(param.toInt());
     }
     else if (motorName == "left_shoulder_x" && method == "move"){
-      left_shoulder_x.move(param.toInt());
+      left_shoulder_x.move_motor(param.toInt());
     }
 
     // FOR LEFT SHOULDER Y ===============================================
@@ -67,10 +65,10 @@ void loop() {
       left_shoulder_y.stopMotor();
     }
     else if (motorName == "left_shoulder_y" && method == "setSpeed"){
-      left_shoulder_y.setSpeed(param.toInt());
+      left_shoulder_y.set_speed(param.toInt());
     }
     else if (motorName == "left_shoulder_y" && method == "move"){
-      left_shoulder_y.move(param.toInt());
+      left_shoulder_y.move_motor(param.toInt());
     }
 
     // FOR LEFT SHOULDER Z ================================================
@@ -81,10 +79,10 @@ void loop() {
       left_shoulder_z.stopMotor();
     }
     else if (motorName == "left_shoulder_z" && method == "setSpeed"){
-      left_shoulder_z.setSpeed(param.toInt());
+      left_shoulder_z.set_speed(param.toInt());
     }
     else if (motorName == "left_shoulder_z" && method == "move"){
-      left_shoulder_z.move(param.toInt());
+      left_shoulder_z.move_motor(param.toInt());
     }
 
     // FOR LEFT BICEPT ====================================================
@@ -95,10 +93,10 @@ void loop() {
       left_bicept.stopMotor();
     }
     else if (motorName == "left_bicept" && method == "setSpeed"){
-      left_bicept.setSpeed(param.toInt());
+      left_bicept.set_speed(param.toInt());
     }
     else if (motorName == "left_bicept" && method == "move"){
-      left_bicept.move(param.toInt());
+      left_bicept.move_motor(param.toInt());
     }
 
   }
