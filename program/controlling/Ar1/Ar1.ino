@@ -1,8 +1,8 @@
 #include "StringSplitter.h"
 #include "agiat_library.h"
 
-Hand left_hand(40, 41, 44, 45, 43, 42);
-Hand right_hand(34, 33, 32, 31, 30, 29);
+Hand left_hand(0, 1, 2, 3, 4, 5);
+Hand right_hand(6, 7, 8, 9, 10, 11);
 
 
 void setup() {
