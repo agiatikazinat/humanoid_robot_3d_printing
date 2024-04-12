@@ -3,7 +3,6 @@
 
 Hand left_hand(40, 41, 44, 45, 43, 42);
 Hand right_hand(34, 33, 32, 31, 30, 29);
-Head head(28, 27, 37, 36, 39, 38);
 
 
 void setup() {
@@ -64,25 +63,7 @@ void loop() {
       right_hand.servo_wrist(param.toInt());
     }
 
-    // FOR HEAD ==================================================================
-    if (motorName == "head" && method == "head"){
-      head.servo_head(param.toInt());
-    }
-    else if (motorName == "head" && method == "mouth"){
-      head.servo_mouth(param.toInt());
-    }
-    else if (motorName == "head" && method == "side_eye"){
-      head.servo_side_eye(param.toInt());
-    }
-    else if (motorName == "head" && method == "up_eye"){
-      head.servo_up_eye(param.toInt());
-    }
-    else if (motorName == "head" && method == "neck_side"){
-      head.servo_side_neck(param.toInt());
-    }
-    else if (motorName == "head" && method == "neck"){
-      head.servo_neck(param.toInt());
-    }
+    
 
   }
 }
