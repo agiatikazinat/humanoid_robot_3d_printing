@@ -32,7 +32,10 @@ while True:
             print(j)
     ar3_ser.write(command.encode('utf-8'))
 
-    
+    while ar3_ser.in_waiting == 0:
+        pass 
+
+    print(ar3_ser.readline().decode().strip())
 
     ar3_ser.flush()
 

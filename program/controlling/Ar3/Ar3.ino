@@ -49,12 +49,15 @@ void loop() {
     }
     else if (motorName == "left_shoulder_x" && method == "stopMotor"){
       left_shoulder_x.stopMotor();
+      Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_x" && method == "setSpeed"){
       left_shoulder_x.set_speed(param.toInt());
+      Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_x" && method == "move"){
       left_shoulder_x.move_motor(param.toInt());
+      Serial.println("Finish");
     }
 
     // FOR LEFT SHOULDER Y ===============================================
@@ -63,12 +66,15 @@ void loop() {
     }
     else if (motorName == "left_shoulder_y" && method == "stopMotor"){
       left_shoulder_y.stopMotor();
+      Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_y" && method == "setSpeed"){
       left_shoulder_y.set_speed(param.toInt());
+      Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_y" && method == "move"){
       left_shoulder_y.move_motor(param.toInt());
+      Serial.println("Finish");
     }
 
     // FOR LEFT SHOULDER Z ================================================
@@ -77,12 +83,15 @@ void loop() {
     }
     else if (motorName == "left_shoulder_z" && method == "stopMotor"){
       left_shoulder_z.stopMotor();
+      Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_z" && method == "setSpeed"){
       left_shoulder_z.set_speed(param.toInt());
+      Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_z" && method == "move"){
       left_shoulder_z.move_motor(param.toInt());
+      Serial.println("Finish");
     }
 
     // FOR LEFT BICEPT ====================================================
@@ -91,12 +100,15 @@ void loop() {
     }
     else if (motorName == "left_bicept" && method == "stopMotor"){
       left_bicept.stopMotor();
+      Serial.println("Finish");
     }
     else if (motorName == "left_bicept" && method == "setSpeed"){
       left_bicept.set_speed(param.toInt());
+      Serial.println("Finish");
     }
     else if (motorName == "left_bicept" && method == "move"){
       left_bicept.move_motor(param.toInt());
+      Serial.println("Finish");
     }
 
   }
