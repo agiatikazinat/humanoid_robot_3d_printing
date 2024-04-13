@@ -35,7 +35,7 @@ Ar4MethodList = ['servo_head', 'servo_mouth', 'servo_side_eye', 'servo_up_eye', 
 
 
 while True:
-    command = input("Enter a command (q to quit): ")
+    command = input("agiat$ ")
     
     if command == 'q':
         break
@@ -100,6 +100,7 @@ while True:
             for i in Ar4MethodList:
                 print(i)
             continue 
+        
     else:
         print("UNKNOWN COMMAND FOR THE ROBOT")
         continue 
