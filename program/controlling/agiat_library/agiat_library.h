@@ -1,5 +1,5 @@
-#ifndef LIBRARY_h
-#define LIBRARY_h 
+#ifndef AGIAT_LIBRARY_h
+#define AGIAT_LIBRARY_h 
 
 #include <Arduino.h>
 #include <Servo.h>
@@ -42,7 +42,7 @@ class Shield_Motor{
         void move_motor(int degree);
         void setDirection(int direct);
         void set_speed(int velocity);
-        int current();
+        int current_deg();
         void setMinLimit(int min_);
         void setMaxLimit(int max_);
         void stopMotor();
