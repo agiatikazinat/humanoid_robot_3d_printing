@@ -34,23 +34,29 @@ void loop() {
      String param = v[2];
 
     // FOR HEAD ==================================================================
-    if (motorName == "head" && method == "head"){
+    if (motorName == "head" && method == "servo_head"){
       head.servo_head(param.toInt());
     }
-    else if (motorName == "head" && method == "mouth"){
+    else if (motorName == "head" && method == "servo_mouth"){
       head.servo_mouth(param.toInt());
     }
-    else if (motorName == "head" && method == "side_eye"){
+    else if (motorName == "head" && method == "servo_side_eye"){
       head.servo_side_eye(param.toInt());
     }
-    else if (motorName == "head" && method == "up_eye"){
+    else if (motorName == "head" && method == "servo_up_eye"){
       head.servo_up_eye(param.toInt());
     }
-    else if (motorName == "head" && method == "neck_side"){
+    else if (motorName == "head" && method == "servo_neck_side"){
       head.servo_side_neck(param.toInt());
     }
-    else if (motorName == "head" && method == "neck"){
+    else if (motorName == "head" && method == "servo_neck"){
       head.servo_neck(param.toInt());
+    } 
+    else if (motorName == "head" && method == "set_max_limit"){
+      head.setMaxLimit(param.toInt())
+    }
+    else if (motorName == "head" && method == "set_min_limit"){
+      head.setMinLimit(param.toInt());
     }
 
 

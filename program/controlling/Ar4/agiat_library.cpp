@@ -1,4 +1,4 @@
-#include "library.h"
+#include "agiat_library.h"
 
 // MOTOR SET UP =============================================================================================
 
@@ -172,7 +172,7 @@ void  Shield_Motor::set_speed(int velocity){
     dcMotor.setSpeed(velocity) ;  
 }
 
-int Shield_Motor::current(){
+int Shield_Motor::current_deg(){
     _current = map(analogRead(_potPin), 0, 1023, 0, 270);  
     return _current;
 }
@@ -190,25 +190,25 @@ void Shield_Motor::stopMotor(){
 }
 
 void Shield_Motor::move_motor(int deg){
-    int current_deg = current();
-    if (current_deg > deg + _delta && current_deg > _min_limit) {
-        while(current_deg > deg + _delta ) {
+    int current_degree = current_deg();
+    if (current_degree > deg + _delta && current_degree > _min_limit) {
+        while(current_degree > deg + _delta ) {
             if (_direction == 1){
                 dcMotor.run(FORWARD);
             } else if (_direction == -1){
                 dcMotor.run(BACKWARD);
             }
-            current_deg = current();
+            current_degree = current_deg();
         }
         dcMotor.run(RELEASE);
-    } else if (current_deg < deg - _delta){
-        while(current_deg < deg - _delta && current_deg < _max_limit){
+    } else if (current_degree < deg - _delta && current_degree < _max_limit ){
+        while(current_degree < deg - _delta ){
             if (_direction == 1){
                 dcMotor.run(BACKWARD);
             } else if (_direction == -1){
                 dcMotor.run(FORWARD);
             }
-            current_deg  = current();
+            current_degree  = current_deg();
         }
         dcMotor.run(RELEASE);
     } else {

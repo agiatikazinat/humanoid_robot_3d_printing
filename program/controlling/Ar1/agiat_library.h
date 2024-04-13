@@ -42,7 +42,7 @@ class Shield_Motor{
         void move_motor(int degree);
         void setDirection(int direct);
         void set_speed(int velocity);
-        int current();
+        int current_deg();
         void setMinLimit(int min_);
         void setMaxLimit(int max_);
         void stopMotor();

@@ -80,8 +80,8 @@ void loop() {
     else if (motorName == "right_shoulder_x" && method == "setSpeed"){
       right_shoulder_x.set_speed(param.toInt());
     }
-    else if(motorName == "right_shoulder_x" && method == "current"){
-      Serial.println(right_shoulder_x.current());
+    else if(motorName == "right_shoulder_x" && method == "current_deg"){
+      Serial.println(right_shoulder_x.current_deg());
     }
     else if(motorName == "right_shoulder_x" && method == "move"){
       right_shoulder_x.move_motor(param.toInt());
@@ -94,8 +94,8 @@ void loop() {
     else if (motorName == "right_shoulder_y" && method == "setSpeed"){
       right_shoulder_y.set_speed(param.toInt());
     }
-    else if(motorName == "right_shoulder_y" && method == "current"){
-      Serial.println(right_shoulder_y.current());
+    else if(motorName == "right_shoulder_y" && method == "current_deg"){
+      Serial.println(right_shoulder_y.current_deg());
     }
     else if(motorName == "right_shoulder_y" && method == "move"){
       right_shoulder_y.move_motor(param.toInt());
@@ -108,8 +108,8 @@ void loop() {
     else if (motorName == "right_shoulder_z" && method == "setSpeed"){
       right_shoulder_z.set_speed(param.toInt());
     }
-    else if(motorName == "right_shoulder_z" && method == "current"){
-      Serial.println(right_shoulder_z.current());
+    else if(motorName == "right_shoulder_z" && method == "current_deg"){
+      Serial.println(right_shoulder_z.current_deg());
     }
     else if(motorName == "right_shoulder_z" && method == "move"){
       right_shoulder_z.move_motor(param.toInt());
@@ -122,8 +122,8 @@ void loop() {
     else if (motorName == "right_bicept" && method == "setSpeed"){
       right_bicept.set_speed(param.toInt());
     }
-    else if(motorName == "right_bicept" && method == "current"){
-      Serial.println(right_bicept.current());
+    else if(motorName == "right_bicept" && method == "current_deg"){
+      Serial.println(right_bicept.current_deg());
     }
     else if(motorName == "right_bicept" && method == "move"){
       right_bicept.move_motor(param.toInt());
@@ -136,7 +136,7 @@ void loop() {
     else if (motorName == "left_x" && method == "setSpeed"){
       left_x.set_speed(param.toInt());
     }
-    else if(motorName == "left_x" && method == "current"){
+    else if(motorName == "left_x" && method == "current_deg"){
       Serial.println(left_x.current_deg());
     }
     else if(motorName == "left_x" && method == "move"){
@@ -150,7 +150,7 @@ void loop() {
     else if (motorName == "right_x" && method == "setSpeed"){
       right_x.set_speed(param.toInt());
     }
-    else if(motorName == "right_x" && method == "current"){
+    else if(motorName == "right_x" && method == "current_deg"){
       Serial.println(right_x.current_deg());
     }
     else if(motorName == "right_x" && method == "move"){
@@ -164,7 +164,7 @@ void loop() {
     else if (motorName == "left_y" && method == "setSpeed"){
       left_y.set_speed(param.toInt());
     }
-    else if(motorName == "left_y" && method == "current"){
+    else if(motorName == "left_y" && method == "current_deg"){
       Serial.println(left_y.current_deg());
     }
     else if(motorName == "left_y" && method == "move"){
@@ -178,7 +178,7 @@ void loop() {
     else if (motorName == "right_y" && method == "setSpeed"){
       right_y.set_speed(param.toInt());
     }
-    else if(motorName == "right_y" && method == "current"){
+    else if(motorName == "right_y" && method == "current_deg"){
       Serial.println(right_y.current_deg());
     }
     else if(motorName == "right_y" && method == "move"){
@@ -192,7 +192,7 @@ void loop() {
     else if (motorName == "left_z" && method == "setSpeed"){
       left_z.set_speed(param.toInt());
     }
-    else if(motorName == "left_z" && method == "current"){
+    else if(motorName == "left_z" && method == "current_deg"){
       Serial.println(left_z.current_deg());
     }
     else if(motorName == "left_z" && method == "move"){
@@ -206,7 +206,7 @@ void loop() {
     else if (motorName == "right_z" && method == "setSpeed"){
       right_z.set_speed(param.toInt());
     }
-    else if(motorName == "right_z" && method == "current"){
+    else if(motorName == "right_z" && method == "current_deg"){
       Serial.println(right_z.current_deg());
     }
     else if(motorName == "right_z" && method == "move"){
@@ -220,7 +220,7 @@ void loop() {
     else if (motorName == "right_knee" && method == "setSpeed"){
       right_knee.set_speed(param.toInt());
     }
-    else if(motorName == "right_knee" && method == "current"){
+    else if(motorName == "right_knee" && method == "current_deg"){
       Serial.println(right_knee.current_deg());
     }
     else if(motorName == "right_knee" && method == "move"){
@@ -235,7 +235,7 @@ void loop() {
     else if (motorName == "left_knee" && method == "setSpeed"){
       left_knee.set_speed(param.toInt());
     }
-    else if(motorName == "left_knee" && method == "current"){
+    else if(motorName == "left_knee" && method == "current_deg"){
       Serial.println(left_knee.current_deg());
     }
     else if(motorName == "left_knee" && method == "move"){
@@ -249,7 +249,7 @@ void loop() {
     else if (motorName == "left_forward_ankle" && method == "setSpeed"){
       left_forward_ankle.set_speed(param.toInt());
     }
-    else if(motorName == "left_forward_ankle" && method == "current"){
+    else if(motorName == "left_forward_ankle" && method == "current_deg"){
       Serial.println(left_forward_ankle.current_deg());
     }
     else if(motorName == "left_forward_ankle" && method == "move"){
@@ -263,7 +263,7 @@ void loop() {
     else if (motorName == "right_forward_ankle" && method == "setSpeed"){
       right_forward_ankle.set_speed(param.toInt());
     }
-    else if(motorName == "right_forward_ankle" && method == "current"){
+    else if(motorName == "right_forward_ankle" && method == "current_deg"){
       Serial.println(right_forward_ankle.current_deg());
     }
     else if(motorName == "right_forward_ankle" && method == "move"){
@@ -277,7 +277,7 @@ void loop() {
     else if (motorName == "right_side_ankle" && method == "setSpeed"){
       right_side_ankle.set_speed(param.toInt());
     }
-    else if(motorName == "right_side_ankle" && method == "current"){
+    else if(motorName == "right_side_ankle" && method == "current_deg"){
       Serial.println(right_side_ankle.current_deg());
     }
     else if(motorName == "right_side_ankle" && method == "move"){
@@ -291,7 +291,7 @@ void loop() {
     else if (motorName == "left_side_ankle" && method == "setSpeed"){
       left_side_ankle.set_speed(param.toInt());
     }
-    else if(motorName == "left_side_ankle" && method == "current"){
+    else if(motorName == "left_side_ankle" && method == "current_deg"){
       Serial.println(left_side_ankle.current_deg());
     }
     else if(motorName == "left_side_ankle" && method == "move"){
