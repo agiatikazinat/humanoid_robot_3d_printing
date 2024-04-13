@@ -4,6 +4,7 @@ import cv2
 import os 
 
 
+
 capture = cv2.VideoCapture('/dev/video0')
 
 while True:
