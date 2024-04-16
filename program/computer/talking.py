@@ -2,7 +2,6 @@ from playsound import playsound
 import os                 
 import pyaudio 
 import threading
-import pyttsx3
 from parameter import * 
 from command import *
 import speech_recognition as sr   
@@ -11,12 +10,8 @@ import sys
 import datetime 
 import webbrowser as wb 
 import time
-import cv2 
 
-sleep = True 
 
-engine = pyttsx3.init() 
-capture = cv2.VideoCapture(camera_port) 
 
 def speak(audio):
     engine.say(audio)
@@ -28,7 +23,22 @@ def telling_time():
     speak(Time)
     print("The current time is: ", Time)
 
+def awake():
+    while sleep:
+        r = sr.Recognizer()   # Initialize recognizer class (for
+        with sr.Microphone() as source:
+            print("Sleeping.z.z.z...")
+            r.pause_threshold = 1
+            audio = r.listen(source)
 
+        try:
+            query = r.recognize_google(audio, language='en-in')
+            print(query)
+            if wake_word in query.lower():
+                starting()
+                sleep = False
+        except Exception as e:
+            print(e)
 
 def starting():
     playsound("playsounds/future-high-tech-logo.mp3")
@@ -48,23 +58,6 @@ def starting():
     
     speak('I am ready to serve you')
 
-while sleep:
-    r = sr.Recognizer()   # Initialize recognizer class (for
-    with sr.Microphone() as source:
-        print("Listening...")
-        r.pause_threshold = 1
-        audio = r.listen(source)
-        print("Over here")
-
-    try:
-        query = r.recognize_google(audio, language='en-in')
-        print(query)
-        if wake_word in query.lower():
-            starting()
-            sleep = False
-    except Exception as e:
-        print(e)
-
 def take_command():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -80,21 +73,10 @@ def take_command():
         return "Try Again"
     return query
 
-while not sleep:
-
-    # Start the camera ========================================
-    # time.sleep(0.5)
-    # success, frame = capture.read() 
-    # if not success:
-    #     break
-    # cv2.imshow('Frame', frame)
-    # =========================================================
-    query = take_command().lower()
-
+def talking():
+    query = take_command().lower() 
+    
     if "turn off" in query:
         speak("See you later, boss")
         sleep = True
-
-
-print('first experiment complete')
-speak('first experiment complete')
+    
