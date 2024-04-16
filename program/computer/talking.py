@@ -3,7 +3,6 @@ import os
 import pyaudio 
 import threading
 from parameter import * 
-from command import *
 import speech_recognition as sr   
 from gtts import gTTS
 import sys
@@ -73,10 +72,11 @@ def take_command():
         return "Try Again"
     return query
 
-def talking():
+def talking(camera):
     query = take_command().lower() 
     
     if "turn off" in query:
         speak("See you later, boss")
         sleep = True
+        camera.turn_off()
     
