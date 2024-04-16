@@ -27,8 +27,8 @@ def camera(camera):
             break
         
         cv2.imshow('Frame', frame)
-        if cv2.waitKey(25) & 0xFF == ord('q'):
-            break
+        # if cv2.waitKey(25) & 0xFF == ord('q'):
+        #     break
     print('off camera')
     capture.release() 
     cv2.destroyAllWindows()
