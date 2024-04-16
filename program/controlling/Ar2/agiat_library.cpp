@@ -194,9 +194,9 @@ void Shield_Motor::move_motor(int deg){
     if (current_degree > deg + _delta && current_degree > _min_limit) {
         while(current_degree > deg + _delta ) {
             if (_direction == 1){
-                dcMotor.run(FORWARD);
-            } else if (_direction == -1){
                 dcMotor.run(BACKWARD);
+            } else if (_direction == -1){
+                dcMotor.run(FORWARD);
             }
             current_degree = current_deg();
         }
@@ -204,9 +204,9 @@ void Shield_Motor::move_motor(int deg){
     } else if (current_degree < deg - _delta && current_degree < _max_limit ){
         while(current_degree < deg - _delta ){
             if (_direction == 1){
-                dcMotor.run(BACKWARD);
-            } else if (_direction == -1){
                 dcMotor.run(FORWARD);
+            } else if (_direction == -1){
+                dcMotor.run(BACKWARD);
             }
             current_degree  = current_deg();
         }

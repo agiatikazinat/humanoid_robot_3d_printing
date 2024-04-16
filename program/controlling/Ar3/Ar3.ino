@@ -41,11 +41,12 @@ void loop() {
      String method = v[1];
      String param = v[2];
 
-
+     int value = param.toInt();
+     Serial.println(value);
     
     // FOR LEFT SHOULDER X ===============================================
     if (motorName == "left_shoulder_x" && method == "current"){
-      Serial.println(left_shoulder_x.current());
+      Serial.println(left_shoulder_x.current_deg());
     }
     else if (motorName == "left_shoulder_x" && method == "stopMotor"){
       left_shoulder_x.stopMotor();
@@ -62,7 +63,7 @@ void loop() {
 
     // FOR LEFT SHOULDER Y ===============================================
     if (motorName == "left_shoulder_y" && method == "current"){
-      Serial.println(left_shoulder_y.current());
+      Serial.println(left_shoulder_y.current_deg());
     }
     else if (motorName == "left_shoulder_y" && method == "stopMotor"){
       left_shoulder_y.stopMotor();
@@ -79,7 +80,7 @@ void loop() {
 
     // FOR LEFT SHOULDER Z ================================================
     if (motorName == "left_shoulder_z" && method == "current"){
-      Serial.println(left_shoulder_z.current());
+      Serial.println(left_shoulder_z.current_deg());
     }
     else if (motorName == "left_shoulder_z" && method == "stopMotor"){
       left_shoulder_z.stopMotor();
@@ -96,7 +97,7 @@ void loop() {
 
     // FOR LEFT BICEPT ====================================================
     if (motorName == "left_bicept" && method == "current"){
-      Serial.println(left_bicept.current());
+      Serial.println(left_bicept.current_deg());
     }
     else if (motorName == "left_bicept" && method == "stopMotor"){
       left_bicept.stopMotor();

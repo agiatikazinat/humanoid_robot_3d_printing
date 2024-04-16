@@ -3,13 +3,13 @@ import time
 import cv2 
 import os 
 
-ar1_port = '/dev/ttyACM1' # Arduino Uno
-ar2_port = '/dev/ttyACM0' # Arduino Mega
+ar1_port = '/dev/ttyACM3' # Arduino Uno
+ar2_port = '/dev/ttyACM1' # Arduino Mega
 ar3_port = '/dev/ttyUSB0' # Arduino Uno
-ar4_port = '/dev/ttyACM2' # Arduino Uno
+ar4_port = '/dev/ttyACM0' # Arduino Uno
 
 ar1_ser = serial.Serial(ar1_port, 19200)
-ar2_ser = serial.Serial(ar2_port, 14400)
+ar2_ser = serial.Serial(ar2_port, 38400)
 ar3_ser = serial.Serial(ar3_port, 9600)
 ar4_ser = serial.Serial(ar4_port, 28800)
 
@@ -41,7 +41,7 @@ while True:
         break
     
     lst_command = command.strip().split(" ")
-    if len(lst_command) != 2 or len(lst_command) !=3 :
+    if len(lst_command) < 2 or len(lst_command) > 3 :
         print("You need to enter the correct number of parameters.")
         continue
     

@@ -46,7 +46,7 @@ Motor right_side_ankle(46, 48, 50, POS_RA);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(14400);
+  Serial.begin(38400);
   
 }
 

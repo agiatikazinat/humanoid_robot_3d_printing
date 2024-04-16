@@ -9,7 +9,7 @@ import sys
 import datetime 
 import webbrowser as wb 
 import time
-
+import sounddevice
 
 
 def speak(audio):
@@ -22,8 +22,8 @@ def telling_time():
     speak(Time)
     print("The current time is: ", Time)
 
-def awake():
-    while sleep:
+def wake_up(robot_status: RobotStatus):
+    while robot_status.get_sleep_status():
         r = sr.Recognizer()   # Initialize recognizer class (for
         with sr.Microphone() as source:
             print("Sleeping.z.z.z...")
@@ -35,7 +35,8 @@ def awake():
             print(query)
             if wake_word in query.lower():
                 starting()
-                sleep = False
+                robot_status.awake()
+                robot_status.camera_on()
         except Exception as e:
             print(e)
 
@@ -57,7 +58,7 @@ def starting():
     
     speak('I am ready to serve you')
 
-def take_command():
+def take_command(robot_status: RobotStatus):
     r = sr.Recognizer()
     with sr.Microphone() as source:
         r.pause_threshold = 1
@@ -69,14 +70,16 @@ def take_command():
     except Exception as e:
         print(e)
         speak("Please say that again")
+        robot_status.sleep()
         return "Try Again"
     return query
 
-def talking(camera):
-    query = take_command().lower() 
+def talking(robot_status: RobotStatus):
+    query = take_command(robot_status).lower() 
     
     if "turn off" in query:
         speak("See you later, boss")
-        sleep = True
-        camera.turn_off()
+        robot_status.sleep()
+
+    
     
