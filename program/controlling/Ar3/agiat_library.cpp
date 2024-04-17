@@ -160,16 +160,12 @@ void Hand::servo_wrist(int degree){
 }
 
 // SHIELD MOTOR  CONTROL FUNCTIONS //////////////////////////////////////////////////////////////////////////
-Shield_Motor::Shield_Motor(uint8_t motorNum, int potPin) : dcMotor(motorNum, MOTOR12_8KHZ) {
+Shield_Motor::Shield_Motor(int potPin) {
     _potPin = potPin;
 }
 
 void Shield_Motor::setDirection(int direct){
     _direction = direct;
-}
-
-void  Shield_Motor::set_speed(int velocity){
-    dcMotor.setSpeed(velocity) ;  
 }
 
 int Shield_Motor::current_deg(){
@@ -185,28 +181,28 @@ void Shield_Motor::setMaxLimit(int max_){
     _max_limit = max_;
 }
 
-void Shield_Motor::stopMotor(){
-    dcMotor.run(RELEASE);
+int Shield_Motor::get_dir(){
+  return _direction;
 }
 
-void Shield_Motor::move_motor(int deg){
+void Shield_Motor::move_motor(AF_DCMotor dcMotor, int deg){
     int current_degree = current_deg();
-    if (current_degree > deg + _delta && current_degree > _min_limit) {
+    if (current_degree > deg + _delta ) {
         while(current_degree > deg + _delta ) {
             if (_direction == 1){
-                dcMotor.run(BACKWARD);
-            } else if (_direction == -1){
                 dcMotor.run(FORWARD);
+            } else if (_direction == -1){
+                dcMotor.run(BACKWARD);
             }
             current_degree = current_deg();
         }
         dcMotor.run(RELEASE);
-    } else if (current_degree < deg - _delta && current_degree < _max_limit ){
+    } else if (current_degree < deg - _delta  ){
         while(current_degree < deg - _delta ){
             if (_direction == 1){
-                dcMotor.run(FORWARD);
-            } else if (_direction == -1){
                 dcMotor.run(BACKWARD);
+            } else if (_direction == -1){
+                dcMotor.run(FORWARD);
             }
             current_degree  = current_deg();
         }

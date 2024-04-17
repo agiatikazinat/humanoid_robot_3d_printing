@@ -1,85 +1,57 @@
 #include "StringSplitter.h"
 #include <AFMotor.h>
 
-int target = 100;
 #define POS_LSX A0
-int dir = 1;
+int dir = -1;
 bool ok = false;
-class Shield_Motor{
-    private:
-        
-        int _direction = 1;
-        int _potPin;
-        int _delta = 2;
-        int _current;
-        int _min_limit, _max_limit;
 
-    public:
-        AF_DCMotor dcMotor;
-        Shield_Motor(uint8_t motorNum, int potPin) : dcMotor(motorNum, MOTOR12_64KHZ) {
-            _potPin = potPin;
-        }
-        
-        int current_deg(){
-            _current = map(analogRead(_potPin), 0, 1023, 0, 270);  
-            return _current;
-        }
-        
-        void stopMotor(){
-            dcMotor.run(RELEASE);
-        }
-
-        void move_motor(int deg){
-          int current_degree = current_deg();
-     
-          if (current_degree > deg + _delta && current_degree > _min_limit) {
-              while(current_degree > deg + _delta ) {
-                  if (_direction == 1){
-                      dcMotor.run(BACKWARD);
-                  } else if (_direction == -1){
-                      dcMotor.run(FORWARD);
-                  }
-                  current_degree = current_deg();
-                  Serial.println(current_degree);
-              }
-              dcMotor.run(RELEASE);
-          } else if (current_degree < deg - _delta && current_degree < _max_limit ){
-              while(current_degree < deg - _delta ){
-                  if (_direction == 1){
-                      dcMotor.run(FORWARD);
-                  } else if (_direction == -1){
-                      dcMotor.run(BACKWARD);
-                  }
-                  current_degree  = current_deg();
-                  Serial.println(current_degree);
-              }
-              dcMotor.run(RELEASE);
-          } else {
-              dcMotor.run(RELEASE); 
+int SMotor_move(AF_DCMotor dcMotor, int target, int pos){
+  int current_degree = map(analogRead(pos), 0, 1023, 0, 270);
+  if (current_degree > target + 2 ) {
+      while(current_degree > target + 2 ) {
+          if (dir == 1){
+              dcMotor.run(FORWARD);
+          } else if (dir == -1){
+              dcMotor.run(BACKWARD);
           }
-        }
+          current_degree = map(analogRead(pos), 0, 1023, 0, 270);
+          Serial.println(current_degree);
+      }
+      dcMotor.run(RELEASE);
+  } else if (current_degree < target - 2 ){
+      while(current_degree < target - 2 ){
+          if (dir == 1){
+              dcMotor.run(BACKWARD);
+          } else if (dir == -1){
+              dcMotor.run(FORWARD);
+          }
+          current_degree  = map(analogRead(pos), 0, 1023, 0, 270);
+          Serial.println(current_degree);
+      }
+      dcMotor.run(RELEASE);
+  } else {
+      dcMotor.run(RELEASE); 
+  }
+}
 
-};
+AF_DCMotor motor2(2, MOTOR12_64KHZ);
+AF_DCMotor myMotor(1, MOTOR12_64KHZ);
 
-
-Shield_Motor motor(1, POS_LSX);
+//Shield_Motor motor(1, POS_LSX);
 
 //AF_DCMotor dcMotor(1, POS_LSX);
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-
-//  dcMotor.setSpeed(200);
+  myMotor.setSpeed(200);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  motor.move_motor(110);
-  
-    int current_degree = map(analogRead(A0), 0, 1023, 0, 270);
-          Serial.println(current_degree);
 
+  SMotor_move(myMotor, 110, POS_LSX);
+  
 //if (ok){
 //     
 //  if (current_degree > target + 2 ) {

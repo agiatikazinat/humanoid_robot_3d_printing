@@ -2,21 +2,31 @@
 #include "agiat_library.h"
 
 
-#define POS_LSX A1
-#define POS_LSY A0
-#define POS_LSZ A3
-#define POS_LBI A1
+#define POS_LSX A0
+#define POS_LSY A1
+#define POS_LSZ A2
+#define POS_LBI A3
 
+AF_DCMotor leftShoulderX(1, MOTOR12_64KHZ);
+AF_DCMotor leftShoulderY(2, MOTOR12_64KHZ);
+AF_DCMotor leftShoulderZ(3, MOTOR12_64KHZ);
+AF_DCMotor leftBicept(4, MOTOR12_64KHZ);
 
-Shield_Motor left_shoulder_y(2, POS_LSY);
-Shield_Motor left_shoulder_z(3, POS_LSZ);
-Shield_Motor left_shoulder_x(1, POS_LSX);
-Shield_Motor left_bicept(4, POS_LBI);
+Shield_Motor left_shoulder_y(POS_LSY);
+Shield_Motor left_shoulder_z(POS_LSZ);
+Shield_Motor left_shoulder_x(POS_LSX);
+Shield_Motor left_bicept(POS_LBI);
 
 
 void setup() {
   Serial.begin(9600);
-
+  leftShoulderY.setSpeed(200);
+  left_shoulder_x.setDirection(-1);
+  leftShoulderX.setSpeed(200);
+  leftShoulderZ.setSpeed(200);
+  left_shoulder_z.setDirection(-1);
+  leftBicept.setSpeed(200);
+  left_bicept.setDirection(-1);
 }
 
 void loop() {
@@ -48,16 +58,12 @@ void loop() {
     if (motorName == "left_shoulder_x" && method == "current"){
       Serial.println(left_shoulder_x.current_deg());
     }
-    else if (motorName == "left_shoulder_x" && method == "stopMotor"){
-      left_shoulder_x.stopMotor();
-      Serial.println("Finish");
-    }
     else if (motorName == "left_shoulder_x" && method == "setSpeed"){
-      left_shoulder_x.set_speed(param.toInt());
+      leftShoulderX.setSpeed(param.toInt());
       Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_x" && method == "move"){
-      left_shoulder_x.move_motor(param.toInt());
+      left_shoulder_x.move_motor(leftShoulderX, param.toInt());
       Serial.println("Finish");
     }
 
@@ -65,16 +71,12 @@ void loop() {
     if (motorName == "left_shoulder_y" && method == "current"){
       Serial.println(left_shoulder_y.current_deg());
     }
-    else if (motorName == "left_shoulder_y" && method == "stopMotor"){
-      left_shoulder_y.stopMotor();
-      Serial.println("Finish");
-    }
     else if (motorName == "left_shoulder_y" && method == "setSpeed"){
-      left_shoulder_y.set_speed(param.toInt());
+      leftShoulderY.setSpeed(param.toInt());
       Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_y" && method == "move"){
-      left_shoulder_y.move_motor(param.toInt());
+      left_shoulder_y.move_motor(leftShoulderY, param.toInt());
       Serial.println("Finish");
     }
 
@@ -82,16 +84,12 @@ void loop() {
     if (motorName == "left_shoulder_z" && method == "current"){
       Serial.println(left_shoulder_z.current_deg());
     }
-    else if (motorName == "left_shoulder_z" && method == "stopMotor"){
-      left_shoulder_z.stopMotor();
-      Serial.println("Finish");
-    }
     else if (motorName == "left_shoulder_z" && method == "setSpeed"){
-      left_shoulder_z.set_speed(param.toInt());
+      leftShoulderZ.setSpeed(param.toInt());
       Serial.println("Finish");
     }
     else if (motorName == "left_shoulder_z" && method == "move"){
-      left_shoulder_z.move_motor(param.toInt());
+      left_shoulder_z.move_motor(leftShoulderZ, param.toInt());
       Serial.println("Finish");
     }
 
@@ -99,16 +97,12 @@ void loop() {
     if (motorName == "left_bicept" && method == "current"){
       Serial.println(left_bicept.current_deg());
     }
-    else if (motorName == "left_bicept" && method == "stopMotor"){
-      left_bicept.stopMotor();
-      Serial.println("Finish");
-    }
     else if (motorName == "left_bicept" && method == "setSpeed"){
-      left_bicept.set_speed(param.toInt());
+      leftBicept.setSpeed(param.toInt());
       Serial.println("Finish");
     }
     else if (motorName == "left_bicept" && method == "move"){
-      left_bicept.move_motor(param.toInt());
+      left_bicept.move_motor(leftBicept, param.toInt());
       Serial.println("Finish");
     }
 

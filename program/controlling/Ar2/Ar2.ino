@@ -21,10 +21,15 @@
 #define POS_RB A14 // Right Bicept
 #define POS_RSZ A15  //Right Shoulder Z-axis
 
-Shield_Motor right_shoulder_x(4, POS_RSX);
-Shield_Motor right_shoulder_y(3, POS_RSY);
-Shield_Motor right_shoulder_z(1, POS_RSZ);
-Shield_Motor right_bicept(2, POS_RB);
+Shield_Motor right_shoulder_x(POS_RSX);
+Shield_Motor right_shoulder_y(POS_RSY);
+Shield_Motor right_shoulder_z(POS_RSZ);
+Shield_Motor right_bicept(POS_RB);
+
+AF_DCMotor rightShoulderX(4);
+AF_DCMotor rightShoulderY(3);
+AF_DCMotor rightShoulderZ(1);
+AF_DCMotor rightBicept(2);
 
 Motor right_knee(21, 20, 19, POS_RAF);
 Motor right_forward_ankle(16, 17, 18, POS_RK);
@@ -47,6 +52,10 @@ Motor right_side_ankle(46, 48, 50, POS_RA);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(38400);
+  rightShoulderX.setSpeed(200);
+  rightShoulderY.setSpeed(200);
+  rightShoulderZ.setSpeed(200);
+  rightBicept.setSpeed(200);
   
 }
 
@@ -74,59 +83,47 @@ void loop() {
    String param = v[2];
 
     // FOR RIGHT SHOULDER X ===================================================
-    if (motorName == "right_shoulder_x" && method == "setDirection"){
-      right_shoulder_x.setDirection(param.toInt());
-    } 
-    else if (motorName == "right_shoulder_x" && method == "setSpeed"){
-      right_shoulder_x.set_speed(param.toInt());
+    if (motorName == "right_shoulder_x" && method == "setSpeed"){
+      rightShoulderX.setSpeed(param.toInt());
     }
-    else if(motorName == "right_shoulder_x" && method == "current_deg"){
+    else if(motorName == "right_shoulder_x" && method == "current"){
       Serial.println(right_shoulder_x.current_deg());
     }
     else if(motorName == "right_shoulder_x" && method == "move"){
-      right_shoulder_x.move_motor(param.toInt());
+      right_shoulder_x.move_motor(rightShoulderX, param.toInt());
     }
 
     // FOR RIGHT SHOULDER Y ===================================================
-    if (motorName == "right_shoulder_y" && method == "setDirection"){
-      right_shoulder_y.setDirection(param.toInt());
-    } 
-    else if (motorName == "right_shoulder_y" && method == "setSpeed"){
-      right_shoulder_y.set_speed(param.toInt());
+    if (motorName == "right_shoulder_y" && method == "setSpeed"){
+      rightShoulderY.setSpeed(param.toInt());
     }
-    else if(motorName == "right_shoulder_y" && method == "current_deg"){
+    else if(motorName == "right_shoulder_y" && method == "current"){
       Serial.println(right_shoulder_y.current_deg());
     }
     else if(motorName == "right_shoulder_y" && method == "move"){
-      right_shoulder_y.move_motor(param.toInt());
+      right_shoulder_y.move_motor(rightShoulderY, param.toInt());
     }
 
     // FOR RIGHT SHOULDER Z ===================================================
-    if (motorName == "right_shoulder_z" && method == "setDirection"){
-      right_shoulder_z.setDirection(param.toInt());
-    } 
-    else if (motorName == "right_shoulder_z" && method == "setSpeed"){
-      right_shoulder_z.set_speed(param.toInt());
+    if (motorName == "right_shoulder_z" && method == "setSpeed"){
+      rightShoulderZ.setSpeed(param.toInt());
     }
-    else if(motorName == "right_shoulder_z" && method == "current_deg"){
+    else if(motorName == "right_shoulder_z" && method == "current"){
       Serial.println(right_shoulder_z.current_deg());
     }
     else if(motorName == "right_shoulder_z" && method == "move"){
-      right_shoulder_z.move_motor(param.toInt());
+      right_shoulder_z.move_motor(rightShoulderZ, param.toInt());
     }
 
     // FOR RIGHT BICEPT =======================================================
-    if (motorName == "right_bicept" && method == "setDirection"){
-      right_bicept.setDirection(param.toInt());
-    } 
-    else if (motorName == "right_bicept" && method == "setSpeed"){
-      right_bicept.set_speed(param.toInt());
+    if (motorName == "right_bicept" && method == "setSpeed"){
+      rightBicept.setSpeed(param.toInt());
     }
-    else if(motorName == "right_bicept" && method == "current_deg"){
+    else if(motorName == "right_bicept" && method == "current"){
       Serial.println(right_bicept.current_deg());
     }
     else if(motorName == "right_bicept" && method == "move"){
-      right_bicept.move_motor(param.toInt());
+      right_bicept.move_motor(rightBicept, param.toInt());
     }
 
     // FOR LEFT X =============================================================
