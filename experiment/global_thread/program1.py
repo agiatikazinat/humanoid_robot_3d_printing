@@ -7,7 +7,7 @@ internet = 1
 
 def test2():
     global internet
-    internet+= 1ar
+    internet+= 1
 def test1():
     global internet 
     internet = 2*3
