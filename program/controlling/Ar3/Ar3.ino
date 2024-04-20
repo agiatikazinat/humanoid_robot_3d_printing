@@ -71,6 +71,10 @@ void loop() {
       p = strtok(NULL, " ");
     }
 
+    String motorName = ""; 
+    String method = "";
+    String param = "";
+
     if (isDigit(command.charAt(0))){
 
       String first_param = v[0];
@@ -78,23 +82,29 @@ void loop() {
       String third_param = v[2];
       String fourth_param = v[3];
 
-      if (isDigit(first_param.charAt(0)){
+      if (isDigit(first_param.charAt(0))){
         target_shoulder_x = first_param.toInt();
       }
 
-      if (isDigit(second_param.charAt(0)){
+      if (isDigit(second_param.charAt(0))){
         target_shoulder_y = second_param.toInt();
       }
 
-      if (isDigit(third_param.charAt(0)){
+      if (isDigit(third_param.charAt(0))){
         target_shoulder_z = third_param.toInt();
       }
 
-      if (isDigit(fourth_param.charAt(0)){
+      if (isDigit(fourth_param.charAt(0))){
         target_bicept = fourth_param.toInt();
       }
 
-    } else {}
+    } else {
+
+      motorName = v[0]; 
+      method = v[1];
+      param = v[2];
+
+    }
 
     if (motorName == "current"){
       Serial.print("X: "); Serial.print(left_shoulder_x.current_deg()); 
@@ -155,14 +165,14 @@ void loop() {
   double error_bicept = target_bicept - current_bicept;
 
   // Calculate PID control outputs
-  double otuput_x = Kp * error_x + Kd * (error_x - previousErrorX); // Ki * integral1
+  double output_x = Kp * error_x + Kd * (error_x - previousErrorX); // Ki * integral1
   double output_y = Kp * error_y + Kd * (error_y - previousErrorY);
   double output_z = Kp * error_z + Kd * (error_z - previousErrorZ);
   double output_bicept = Kp * error_bicept + Kd * (error_bicept - previousErrorBicept);
 
   // Update integral terms
-  integral1 += error1;
-  integral2 += error2;
+  integral1 += error_x;
+  integral2 += error_y;
 
   // Update previous errors
   previousErrorX = error_x;
