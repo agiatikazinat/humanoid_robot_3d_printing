@@ -187,6 +187,20 @@ void loop() {
   int motorSpeedBicept = constrain(output_bicept, -255, 255);
 
   // Apply control signals to the motors
+
+  if (error_x <= 2 && error_x >= -2){
+    motorSpeedX = 0;
+  }
+  if (error_y <= 2 && error_y >= -2){
+    motorSpeedY = 0;
+  }
+  if (error_z <= 2 && error_z >= -2){
+    motorSpeedZ = 0;
+  }
+  if (error_bicept <= 2 && error_bicept >= -2){
+    motorSpeedBicept = 0;
+  }
+
   if (motorSpeedX >= 0) {
     leftShoulderX.run(FORWARD);
     leftShoulderX.setSpeed(motorSpeedX);
