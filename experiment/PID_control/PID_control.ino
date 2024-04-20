@@ -1,13 +1,9 @@
-#include <Wire.h>
-#include <Adafruit_MotorShield.h>
-#include "utility/Adafruit_MS_PWMServoDriver.h"
+#include "AFMotor.h"
+#include "Servo.h"
+#include "StringSplitter.h"
 
-// Create the motor shield object with the default I2C address
-Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
-
-// Create the motor objects
-Adafruit_DCMotor *motor1 = AFMS.getMotor(1);
-Adafruit_DCMotor *motor2 = AFMS.getMotor(2);
+AF_DCMotor myMotor1(1, MOTOR12_64KHZ);
+AF_DCMotor myMotor2(2, MOTOR12_64KHZ);
 
 // Define the pins for potentiometer input
 const int potPin1 = A0; // Analog pin for reading potentiometer value for motor 1
@@ -21,29 +17,49 @@ const double Kd = 0.1; // Derivative gain
 // Define variables for PID control
 double targetPosition1 = 0; // Target position for motor 1
 double targetPosition2 = 0; // Target position for motor 2
+
 double currentPosition1 = 0; // Current position read from potentiometer for motor 1
 double currentPosition2 = 0; // Current position read from potentiometer for motor 2
+
 double previousError1 = 0; // Error in previous iteration for motor 1
 double previousError2 = 0; // Error in previous iteration for motor 2
+
 double integral1 = 0; // Integral term for motor 1
 double integral2 = 0; // Integral term for motor 2
 
 void setup() {
   // Initialize serial communication for debugging
   Serial.begin(9600);
-  
-  // Initialize motor shield
-  AFMS.begin(); 
 }
 
 void loop() {
-  // Read potentiometer values
-  currentPosition1 = analogRead(potPin1);
-  currentPosition2 = analogRead(potPin2);
+
+  if (Serial.available() > 0){
+    String command = Serial.readStringUntil('\n');
+    
+    // split the command
+    char command_1[command.length()];
+    command.toCharArray(command_1, command.length() + 1);
+
+     char* v[3];
+     int i = 0;
+     char* p;
+     p = strtok(command_1, " ");
+     while(p && i < 3){
+      v[i] = p;
+      p = strtok(NULL, " ");
+      i++;
+     }
+     
+     targetPosition1 = v[0].toInt();
+     targetPosition2 = v[1].toInt();
+     Serial.print(targetPosition1); Serial.print(" ");
+     Serial.println(targetPosition2);
+  }
   
-  // Map potentiometer values to the desired position range (0-255)
-  targetPosition1 = map(currentPosition1, 0, 1023, 0, 255);
-  targetPosition2 = map(currentPosition2, 0, 1023, 0, 255);
+  // read potentiometer values 
+  currentPosition1 = map(analogRead(potPin1), 0, 1023, 0, 255);
+  currentPosition2 = map(analogRead(potPin2), 0, 1023, 0, 255);
 
   // Calculate errors
   double error1 = targetPosition1 - currentPosition1;
@@ -67,19 +83,19 @@ void loop() {
 
   // Apply control signals to the motors
   if (motorSpeed1 >= 0) {
-    motor1->run(FORWARD);
-    motor1->setSpeed(motorSpeed1);
+    motor1.run(FORWARD);
+    motor1.setSpeed(motorSpeed1);
   } else {
-    motor1->run(BACKWARD);
-    motor1->setSpeed(-motorSpeed1);
+    motor1.run(BACKWARD);
+    motor1.setSpeed(-motorSpeed1);
   }
   
   if (motorSpeed2 >= 0) {
-    motor2->run(FORWARD);
-    motor2->setSpeed(motorSpeed2);
+    motor2.run(FORWARD);
+    motor2.setSpeed(motorSpeed2);
   } else {
-    motor2->run(BACKWARD);
-    motor2->setSpeed(-motorSpeed2);
+    motor2.run(BACKWARD);
+    motor2.setSpeed(-motorSpeed2);
   }
 
   // Print debug information
