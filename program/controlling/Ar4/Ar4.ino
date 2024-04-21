@@ -34,7 +34,7 @@ void loop() {
     String param = v[2];
 
     // Head(int se, int m, int ue, int h, int n, int sn)
-    if (isDigit(command.charAt(0))){
+    if (motorName == "head" && isDigit(method.charAt(0))){
       String se_param = v[0];
       String m_param = v[1];
       String ue_param = v[2];
@@ -42,12 +42,12 @@ void loop() {
       String n_param = v[4];
       String sn_param = v[5];
 
-      head.servo_head(h_param);
-      head.servo_mouth(m_param);
-      head.servo_side_eye(se_param);
-      head.servo_up_eye(ue_param);
-      head.servo_side_neck(sn_param);
-      head.srevo_neck(n_param);
+      head.servo_head(h_param.toInt());
+      head.servo_mouth(m_param.toInt());
+      head.servo_side_eye(se_param.toInt());
+      head.servo_up_eye(ue_param.toInt());
+      head.servo_side_neck(sn_param.toInt());
+      head.servo_neck(n_param.toInt());
 
     }
 

@@ -96,7 +96,7 @@ void loop() {
     p = strtok(NULL, " ");
     i++;
    }
-   String motorName = "";
+   String motorName = v[0];
    String method = "";
    String param = "";
 

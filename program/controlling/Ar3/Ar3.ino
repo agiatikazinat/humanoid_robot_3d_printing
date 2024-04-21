@@ -82,11 +82,11 @@ void loop() {
       i++;
     }
 
-    String motorName = ""; 
-    String method = "";
+    String motorName = v[0]; 
+    String method = v[1];
     String param = "";
 
-    if (isDigit(command.charAt(0))){
+    if (motorName == "la"){
 
       String first_param = v[0];
       String second_param = v[1];
@@ -109,9 +109,7 @@ void loop() {
         target_bicept = fourth_param.toInt();
       }
       
-      Serial.println("Received");
-      Serial.print("Target shoulder x: "); Serial.println(target_shoulder_x);
-
+      
     } else {
 
       motorName = v[0]; 
