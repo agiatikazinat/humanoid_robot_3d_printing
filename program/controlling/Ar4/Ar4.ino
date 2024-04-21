@@ -2,7 +2,7 @@
 #include "StringSplitter.h"
 
 // Head(int se, int m, int ue, int h, int n, int sn)
-Head head(1, 0, 2, 3, 4, 5);
+Head head(0, 1, 2, 3, 4, 5);
 
 void setup() {
   // put your setup code here, to run once:
@@ -20,18 +20,36 @@ void loop() {
     char command_1[command.length()];
     command.toCharArray(command_1, command.length() + 1);
 
-     char* v[3];
-     int i = 0;
-     char* p;
-     p = strtok(command_1, " ");
-     while(p && i < 3){
+    char* v[6];
+    int i = 0;
+    char* p;
+    p = strtok(command_1, " ");
+    while(p && i < 6){
       v[i] = p;
       p = strtok(NULL, " ");
       i++;
-     }
-     String motorName = v[0];
-     String method = v[1];
-     String param = v[2];
+    }
+    String motorName = v[0];
+    String method = v[1];
+    String param = v[2];
+
+    // Head(int se, int m, int ue, int h, int n, int sn)
+    if (isDigit(command.charAt(0))){
+      String se_param = v[0];
+      String m_param = v[1];
+      String ue_param = v[2];
+      String h_param = v[3];
+      String n_param = v[4];
+      String sn_param = v[5];
+
+      head.servo_head(h_param);
+      head.servo_mouth(m_param);
+      head.servo_side_eye(se_param);
+      head.servo_up_eye(ue_param);
+      head.servo_side_neck(sn_param);
+      head.srevo_neck(n_param);
+
+    }
 
     // FOR HEAD ==================================================================
     if (motorName == "head" && method == "servo_head"){

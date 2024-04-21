@@ -57,16 +57,18 @@ void loop() {
      int i = 0;
      char* p;
      p = strtok(command_1, " ");
-     while(p && i < 3){
+     while(p ){
       v[i] = p;
       p = strtok(NULL, " ");
       i++;
+      Serial.println(p);
      }
      
-     String v1 = v[0];
+     
+     if (numeric){
+      String v1 = v[0];
      String v2 = v[1];
      String v3 = v[2];
-     if (numeric){
       targetPosition1 = v1.toInt();
       targetPosition2 = v2.toInt();
       Serial.print(targetPosition1); Serial.print(" ");
@@ -77,7 +79,8 @@ void loop() {
 
   }
 
-  
+  Serial.print("Target shoulder X: "); Serial.println(targetPosition1);
+
   // read potentiometer values 
   currentPosition1 = map(analogRead(potPin1), 0, 1023, 0, 255);
   currentPosition2 = map(analogRead(potPin2), 0, 1023, 0, 255);

@@ -29,7 +29,6 @@ int target_shoulder_y = current_shoulder_y;
 int target_shoulder_z = current_shoulder_z;
 
 
-
 // Define the parameters for PID control
 const double Kp = 0.5; // Proportional gain
 const double Ki = 0.2; // Integral gain
