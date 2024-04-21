@@ -17,16 +17,16 @@ Shield_Motor left_shoulder_x(POS_LSX);
 Shield_Motor left_bicept(POS_LBI);
 
 
-int current_bicept = 0;
-int current_shoulder_x = 0;
-int current_shoulder_y = 0;
-int current_shoulder_z = 0;
+int current_bicept = left_bicept.current_deg();
+int current_shoulder_x = left_shoulder_x.current_deg();
+int current_shoulder_y = left_shoulder_y.current_deg();
+int current_shoulder_z = left_shoulder_z.current_deg();
 
 
-int target_bicept = 0;
-int target_shoulder_x = 0;
-int target_shoulder_y = 0;
-int target_shoulder_z = 0;
+int target_bicept = current_bicept;
+int target_shoulder_x = current_shoulder_x;
+int target_shoulder_y = current_shoulder_y;
+int target_shoulder_z = current_shoulder_z;
 
 
 
@@ -35,16 +35,21 @@ const double Kp = 0.5; // Proportional gain
 const double Ki = 0.2; // Integral gain
 const double Kd = 0.1; // Derivative gain
 
-double previousErrorX = current_shoulder_x; // Error in previous iteration for motor 1
-double previousErrorY = current_shoulder_y; // Error in previous iteration for motor 2
-double previousErrorZ = current_shoulder_z;
-double previousErrorBicept = current_bicept;
+//double previousErrorX = current_shoulder_x; // Error in previous iteration for motor 1
+//double previousErrorY = current_shoulder_y; // Error in previous iteration for motor 2
+//double previousErrorZ = current_shoulder_z;
+//double previousErrorBicept = current_bicept;
 
 
 double integral1 = 0; // Integral term for motor 1
 double integral2 = 0; // Integral term for motor 2
 
 bool numeric = false;
+
+double error_x; 
+double error_y;
+double error_z;
+double error_bicept;
 
 
 void setup() {
@@ -74,9 +79,10 @@ void loop() {
     int i = 0;
     char* p;
     p = strtok(command_1, " ");
-    while(p){
+    while(p && i < 4){
       v[i] = p;
       p = strtok(NULL, " ");
+      i++;
     }
 
     String motorName = ""; 
@@ -91,21 +97,21 @@ void loop() {
       String fourth_param = v[3];
 
       if (isDigit(first_param.charAt(0))){
-        target_angles[0] = first_param.toInt();
+        target_shoulder_x = first_param.toInt();
       }
 
       if (isDigit(second_param.charAt(0))){
-        target_angles[1] = second_param.toInt();
+        target_shoulder_y = second_param.toInt(); 
       }
 
       if (isDigit(third_param.charAt(0))){
-        target_angles[2] = third_param.toInt();
+        target_shoulder_z = third_param.toInt();
       }
 
       if (isDigit(fourth_param.charAt(0))){
-        target_angles[3] = fourth_param.toInt();
+        target_bicept = fourth_param.toInt();
       }
-
+      
       Serial.println("Received");
       Serial.print("Target shoulder x: "); Serial.println(target_shoulder_x);
 
@@ -171,7 +177,6 @@ void loop() {
 
   }
 
-  Serial.print("Target shoulder X: "); Serial.println(target_shoulder_x);
 
   current_shoulder_x = left_shoulder_x.current_deg();
   current_shoulder_y = left_shoulder_y.current_deg();
@@ -179,10 +184,10 @@ void loop() {
   current_bicept = left_bicept.current_deg();
   
   // Calculate errors
-  double error_x = target_shoulder_x - current_shoulder_x;
-  double error_y = target_shoulder_y - current_shoulder_y;
-  double error_z = target_shoulder_z - current_shoulder_z;
-  double error_bicept = target_bicept - current_bicept;
+  error_x = target_shoulder_x - current_shoulder_x;
+  error_y = target_shoulder_y - current_shoulder_y;
+  error_z = target_shoulder_z - current_shoulder_z;
+  error_bicept = target_bicept - current_bicept;
 
   if (error_x <= 3 && error_x >= -3){
     leftShoulderX.run(RELEASE);
@@ -211,9 +216,9 @@ void loop() {
   if (error_bicept <= 3 && error_bicept >= -3){
     leftBicept.run(RELEASE);
   } else if(error_bicept > 3){
-    leftBicept.run(BACKWARD);
-  } else if(error_bicept < -3){
     leftBicept.run(FORWARD);
+  } else if(error_bicept < -3){
+    leftBicept.run(BACKWARD);
   }
 
 
