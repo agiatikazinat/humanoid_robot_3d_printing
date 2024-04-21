@@ -44,8 +44,6 @@ const double Kd = 0.1; // Derivative gain
 double integral1 = 0; // Integral term for motor 1
 double integral2 = 0; // Integral term for motor 2
 
-bool numeric = false;
-
 double error_x; 
 double error_y;
 double error_z;
@@ -56,11 +54,11 @@ void setup() {
   Serial.begin(9600);
 
   leftShoulderY.setSpeed(200);
-  left_shoulder_x.setDirection(-1);
   leftShoulderX.setSpeed(200);
   leftShoulderZ.setSpeed(200);
-  left_shoulder_z.setDirection(-1);
   leftBicept.setSpeed(200);
+  left_shoulder_x.setDirection(-1);
+  left_shoulder_z.setDirection(-1);
   left_bicept.setDirection(-1);
 
 }
@@ -189,13 +187,41 @@ void loop() {
   error_z = target_shoulder_z - current_shoulder_z;
   error_bicept = target_bicept - current_bicept;
 
+  // set speed =============================================================
+  if (error_x <= 12){
+    leftShoulderX.setSpeed(100);
+  } else{
+    leftShoulderX.setSpeed(255);
+  }
+
+  if (error_y <= 12){
+    leftShoulderY.setSpeed(100);
+  } else{
+    leftShoulderY.setSpeed(255);
+  }
+
+  if (error_z <= 12){
+    leftShoulderZ.setSpeed(100);
+  } else{
+    leftShoulderZ.setSpeed(255);
+  }
+
+  if (error_bicept <= 12){
+    leftBicept.setSpeed(100);
+  } else{
+    leftBicept.setSpeed(255);
+  }
+
+
+  // Run motor ==============================================================
+
   if (error_x <= 3 && error_x >= -3){
     leftShoulderX.run(RELEASE);
   } else if(error_x > 3){
     leftShoulderX.run(FORWARD);
   } else if(error_x < -3){
     leftShoulderX.run(BACKWARD);
-  }
+  } 
   
   if (error_y <= 3 && error_y >= -3){
     leftShoulderY.run(RELEASE);
@@ -208,9 +234,9 @@ void loop() {
   if (error_z <= 3 && error_z >= -3){
     leftShoulderZ.run(RELEASE);
   } else if(error_z > 3){
-    leftShoulderZ.run(BACKWARD);
-  } else if(error_z < -3){
     leftShoulderZ.run(FORWARD);
+  } else if(error_z < -3){
+    leftShoulderZ.run(BACKWARD);
   }
   
   if (error_bicept <= 3 && error_bicept >= -3){
