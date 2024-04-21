@@ -35,6 +35,7 @@ void setup() {
   // Initialize serial communication for debugging
   Serial.begin(9600);
   myServo.attach(9);
+  myMotor1.setSpeed(200);
 }
 
 void loop() {
@@ -80,43 +81,53 @@ void loop() {
   // read potentiometer values 
   currentPosition1 = map(analogRead(potPin1), 0, 1023, 0, 255);
   currentPosition2 = map(analogRead(potPin2), 0, 1023, 0, 255);
+
+
   Serial.println(currentPosition1);
   // Calculate errors
   double error1 = targetPosition1 - currentPosition1;
   double error2 = targetPosition2 - currentPosition2;
 
   // Calculate PID control outputs
-  double output1 = Kp * error1 +  Kd * (error1 - previousError1);
-  double output2 = Kp * error2 + Ki * integral2 + Kd * (error2 - previousError2);
+  // double output1 = Kp * error1 +  Kd * (error1 - previousError1);
+  // double output2 = Kp * error2 + Ki * integral2 + Kd * (error2 - previousError2);
 
-  // Update integral terms
-  integral1 += error1;
-  integral2 += error2;
-
-  // Update previous errors
-  previousError1 = error1;
-  previousError2 = error2;
-
-  // Limit the outputs to the motor speed range (-255 to 255)
-  int motorSpeed1 = constrain(output1, -255, 255);
-  int motorSpeed2 = constrain(output2, -255, 255);
-
-  // Apply control signals to the motors
-  if (motorSpeed1 >= 0) {
+  if (error1 <= 3 && error1 >= -3){
+    myMotor1.run(RELEASE);
+  } else if(error1 > 3){
     myMotor1.run(FORWARD);
-    myMotor1.setSpeed(motorSpeed1);
-  } else {
+  } else if(error1 < -3){
     myMotor1.run(BACKWARD);
-    myMotor1.setSpeed(-motorSpeed1);
   }
+
+  // // Update integral terms
+  // integral1 += error1;
+  // integral2 += error2;
+
+  // // Update previous errors
+  // previousError1 = error1;
+  // previousError2 = error2;
+
+  // // Limit the outputs to the motor speed range (-255 to 255)
+  // int motorSpeed1 = constrain(output1, -255, 255);
+  // int motorSpeed2 = constrain(output2, -255, 255);
+
+  // // Apply control signals to the motors
+  // if (motorSpeed1 >= 0) {
+  //   myMotor1.run(FORWARD);
+  //   myMotor1.setSpeed(motorSpeed1);
+  // } else {
+  //   myMotor1.run(BACKWARD);
+  //   myMotor1.setSpeed(-motorSpeed1);
+  // }
   
-  if (motorSpeed2 >= 0) {
-    myMotor2.run(FORWARD);
-    myMotor2.setSpeed(motorSpeed2);
-  } else {
-    myMotor2.run(BACKWARD);
-    myMotor2.setSpeed(-motorSpeed2);
-  }
+  // if (motorSpeed2 >= 0) {
+  //   myMotor2.run(FORWARD);
+  //   myMotor2.setSpeed(motorSpeed2);
+  // } else {
+  //   myMotor2.run(BACKWARD);
+  //   myMotor2.setSpeed(-motorSpeed2);
+  // }
 
   // Print debug information
   // Serial.print("Motor 1 - Target Position: ");

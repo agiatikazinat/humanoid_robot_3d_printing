@@ -17,17 +17,16 @@ Shield_Motor left_shoulder_x(POS_LSX);
 Shield_Motor left_bicept(POS_LBI);
 
 
-int current_bicept = left_bicept.current_deg();
-int current_shoulder_x = left_shoulder_x.current_deg();
-int current_shoulder_y = left_shoulder_y.current_deg();
-int current_shoulder_z = left_shoulder_z.current_deg();
+int current_bicept = 0;
+int current_shoulder_x = 0;
+int current_shoulder_y = 0;
+int current_shoulder_z = 0;
 
-int target_angles[4] = {current_shoulder_x, current_shoulder_y, current_shoulder_z, current_bicept};
 
-int target_bicept;
-int target_shoulder_x;
-int target_shoulder_y;
-int target_shoulder_z;
+int target_bicept = 0;
+int target_shoulder_x = 0;
+int target_shoulder_y = 0;
+int target_shoulder_z = 0;
 
 
 
@@ -41,10 +40,6 @@ double previousErrorY = current_shoulder_y; // Error in previous iteration for m
 double previousErrorZ = current_shoulder_z;
 double previousErrorBicept = current_bicept;
 
-double error_x = target_angles[0] - current_shoulder_x;
-double error_y = target_angles[1] - current_shoulder_y;
-double error_z = target_angles[2] - current_shoulder_z;
-double error_bicept= target_angles[3] - current_bicept;
 
 double integral1 = 0; // Integral term for motor 1
 double integral2 = 0; // Integral term for motor 2
@@ -143,7 +138,7 @@ void loop() {
       Serial.println(left_shoulder_x.current_deg());
     }
     else if (motorName == "left_shoulder_x" && method == "move"){
-      target_shoulder_x = 
+      target_shoulder_x = param.toInt();
       Serial.println("Finish");
     }
 
@@ -152,7 +147,7 @@ void loop() {
       Serial.println(left_shoulder_y.current_deg());
     }
     else if (motorName == "left_shoulder_y" && method == "move"){
-      left_shoulder_y.move_motor(leftShoulderY, param.toInt());
+      target_shoulder_y = param.toInt();
       Serial.println("Finish");
     }
 
@@ -161,7 +156,7 @@ void loop() {
       Serial.println(left_shoulder_z.current_deg());
     }
     else if (motorName == "left_shoulder_z" && method == "move"){
-      left_shoulder_z.move_motor(leftShoulderZ, param.toInt());
+      target_shoulder_z = param.toInt();
       Serial.println("Finish");
     }
 
@@ -170,13 +165,13 @@ void loop() {
       Serial.println(left_bicept.current_deg());
     }
     else if (motorName == "left_bicept" && method == "move"){
-      target_bicept = param.toInt();
+      target_bicept = param.toInt(); 
       Serial.println("Finish");
     }
 
   }
 
-  Serial.print("Target shoulder X: "); Serial.println(target_angles[0]);
+  Serial.print("Target shoulder X: "); Serial.println(target_shoulder_x);
 
   current_shoulder_x = left_shoulder_x.current_deg();
   current_shoulder_y = left_shoulder_y.current_deg();
@@ -184,10 +179,10 @@ void loop() {
   current_bicept = left_bicept.current_deg();
   
   // Calculate errors
-  error_x = target_angles[0] - current_shoulder_x;
-  error_y = target_angles[1] - current_shoulder_y;
-  error_z = target_angles[2] - current_shoulder_z;
-  error_bicept = target_angles[3] - current_bicept;
+  double error_x = target_shoulder_x - current_shoulder_x;
+  double error_y = target_shoulder_y - current_shoulder_y;
+  double error_z = target_shoulder_z - current_shoulder_z;
+  double error_bicept = target_bicept - current_bicept;
 
   if (error_x <= 3 && error_x >= -3){
     leftShoulderX.run(RELEASE);
@@ -197,27 +192,27 @@ void loop() {
     leftShoulderX.run(BACKWARD);
   }
   
-  if (error_y <= 2 && error_y >= -2){
+  if (error_y <= 3 && error_y >= -3){
     leftShoulderY.run(RELEASE);
-  } else if(error_y > 2){
+  } else if(error_y > 3){
     leftShoulderY.run(BACKWARD);
-  } else if(error_y < -2){
+  } else if(error_y < -3){
     leftShoulderY.run(FORWARD);
   }
   
-  if (error_z <= 2 && error_z >= -2){
+  if (error_z <= 3 && error_z >= -3){
     leftShoulderZ.run(RELEASE);
-  } else if(error_z > 2){
+  } else if(error_z > 3){
     leftShoulderZ.run(BACKWARD);
-  } else if(error_z < -2){
+  } else if(error_z < -3){
     leftShoulderZ.run(FORWARD);
   }
   
-  if (error_bicept <= 2 && error_bicept >= -2){
+  if (error_bicept <= 3 && error_bicept >= -3){
     leftBicept.run(RELEASE);
-  } else if(error_bicept > 2){
+  } else if(error_bicept > 3){
     leftBicept.run(BACKWARD);
-  } else if(error_bicept < -2){
+  } else if(error_bicept < -3){
     leftBicept.run(FORWARD);
   }
 
