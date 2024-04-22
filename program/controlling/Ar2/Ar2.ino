@@ -94,20 +94,7 @@ void loop() {
       String param = v[2];
    }
 
-   if (motorName == "current_ra"){
-      Serial.print("X: "); Serial.print(right_shoulder_x.current_deg()); 
-      Serial.print(" Y: "); Serial.print(right_shoulder_y.current_deg());
-      Serial.print(" Z: "); Serial.print(right_shoulder_z.current_deg());
-      Serial.print(" Bicept: "); Serial.println(right_bicept.current_deg());
-   }
-
-   if (motorName == "error_ra"){
-      Serial.print("X Error: "); Serial.print(error_x); 
-      Serial.print(" Y Error: "); Serial.print(error_y);
-      Serial.print(" Z Error: "); Serial.print(error_z);
-      Serial.print(" Bicept Error: "); Serial.println(error_bicept);
-
-    }
+   
 
     // FOR HEAD ==================================================================
     if (motorName == "head" && method == "servo_head"){
@@ -129,7 +116,7 @@ void loop() {
       head.servo_neck(param.toInt());
     } 
     else if (motorName == "head" && method == "set_max_limit"){
-      head.setMaxLimit(param.toInt())
+      head.setMaxLimit(param.toInt());
     }
     else if (motorName == "head" && method == "set_min_limit"){
       head.setMinLimit(param.toInt());
