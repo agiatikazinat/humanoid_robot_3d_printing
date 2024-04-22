@@ -72,11 +72,11 @@ void loop() {
     char command_1[command.length()];
     command.toCharArray(command_1, command.length() + 1);
 
-    char* v[4];
+    char* v[5];
     int i = 0;
     char* p;
     p = strtok(command_1, " ");
-    while(p && i < 4){
+    while(p && i < 5){
       v[i] = p;
       p = strtok(NULL, " ");
       i++;
@@ -88,10 +88,10 @@ void loop() {
 
     if (motorName == "la"){
 
-      String first_param = v[0];
-      String second_param = v[1];
-      String third_param = v[2];
-      String fourth_param = v[3];
+      String first_param = v[1];
+      String second_param = v[2];
+      String third_param = v[3];
+      String fourth_param = v[4];
 
       if (isDigit(first_param.charAt(0))){
         target_shoulder_x = first_param.toInt();
