@@ -1,13 +1,12 @@
 #include "StringSplitter.h"
 #include "agiat_library.h"
 
-Hand left_hand(0, 1, 2, 3, 4, 5);
-Hand right_hand(6, 7, 8, 9, 10, 11);
+Hand right_hand(0, 1, 2, 3, 4, 5);
 
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(19200);
+  Serial.begin(9600);
 
 }
 
@@ -34,20 +33,6 @@ void loop() {
      String method = v[1];
      String param = v[2];
 
-
-    // FOR LEFT HAND ============================================================
-    if ( motorName == "left_hand" && method == "open"){
-      left_hand.open();
-    } 
-    else if (motorName == "left_hand" && method == "close"){
-      left_hand.close();
-    }
-    else if (motorName == "left_hand" && method == "finger_moving"){
-      left_hand.finger_moving(param);
-    }
-    else if (motorName == "left_hand" && method == "wrist"){
-      left_hand.servo_wrist(param.toInt());
-    }
 
     // FOR RIGHT HAND ============================================================
     if ( motorName == "right_hand" && method == "open"){
