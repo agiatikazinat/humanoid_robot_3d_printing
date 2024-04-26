@@ -3,29 +3,29 @@
 // left_hand
 Servo thumb, index, middle, ring, pinky, wrist;
 
-//right hand
-Servo thumb1, index1, middle1, ring1, pinky1, wrist1;
+// //right hand
+// Servo thumb1, index1, middle1, ring1, pinky1, wrist1;
 
 void setup() {
   // put your setup code here, to run once:
  // Left Hand
  
-  thumb.attach(6);
-  index.attach(7);
-  middle.attach(8);
-  ring.attach(9);
-  pinky.attach(10);
-  wrist.attach(11);
+  thumb.attach(0);
+  index.attach(1);
+  middle.attach(2);
+  ring.attach(3);
+  pinky.attach(4);
+  wrist.attach(5);
   
 
 // Right hand
 
-  thumb1.attach(0);
-  index1.attach(1);
-  middle1.attach(2);
-  ring1.attach(3);
-  pinky1.attach(4);
-  wrist1.attach(5);
+  // thumb1.attach(0);
+  // index1.attach(1);
+  // middle1.attach(2);
+  // ring1.attach(3);
+  // pinky1.attach(4);
+  // wrist1.attach(5);
 
   Serial.begin(9600);
 }
