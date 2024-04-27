@@ -4,17 +4,17 @@ Servo thumb, index, middle, ring, pinky, wrist;
 
 void setup() {
   // put your setup code here, to run once:
-  thumb.attach(0);
-    index.attach(1);
-    middle.attach(2);
-    ring.attach(3);
-    pinky.attach(4);
-    wrist.attach(5);
+    thumb.attach(2);
+    index.attach(3);
+    middle.attach(4);
+    ring.attach(5);
+    pinky.attach(6);
+    wrist.attach(7);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  thumb.write(0);
+    thumb.write(0);
     index.write(0); 
     middle.write(0);
     ring.write(0);

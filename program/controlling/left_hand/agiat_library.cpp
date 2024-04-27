@@ -98,11 +98,11 @@ void Hand::open(){
 }
 
 void  Hand::close(){
-    thumb.write(270);
-    index.write(270);
-    middle.write(270);
-    ring.write(270);
-    pinky.write(270);
+    thumb.write(180);
+    index.write(180);
+    middle.write(180);
+    ring.write(180);
+    pinky.write(180);
 }
 
 void Hand::finger_moving(String finger){

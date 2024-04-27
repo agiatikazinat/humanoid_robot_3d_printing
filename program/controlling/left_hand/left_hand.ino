@@ -1,28 +1,19 @@
 // #include "StringSplitter.h"
 // #include "agiat_library.h"
 #include <Servo.h>
-// Hand left_hand(0, 1, 2, 3, 4, 5);
+// Hand left_hand(2,3,4,5,6,7);
 
-Servo thumb;
-Servo index;
-Servo middle, ring, pinky, wrist; 
-
-String motorName;
-String method;
-String param;
-
+Servo thumb, index, middle, ring, pinky, wrist;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
-
-  thumb.attach(0);
-  index.attach(1);
-  middle.attach(2);
-  ring.attach(3);
-  pinky.attach(4);
-  wrist.attach(5);
-
+    Serial.begin(9600);
+    thumb.attach(2);
+    index.attach(3);
+    middle.attach(4);
+    ring.attach(5);
+    pinky.attach(6);
+    wrist.attach(7);
 }
 
 void loop() {
@@ -35,47 +26,56 @@ void loop() {
     char command_1[command.length()];
     command.toCharArray(command_1, command.length() + 1);
 
-    char* v[3];
+    char* v[6];
     int i = 0;
     char* p;
     p = strtok(command_1, " ");
-    while(p && i < 3){
+
+    while(p && i < 6){
       v[i] = p;
       p = strtok(NULL, " ");
       i++;
     }
-    motorName = v[0];
-    method = v[1];
-    param = v[2];
-    Serial.print("Inside loop: ");
-    Serial.println(motorName);
-    Serial.print(" method: ");
-    Serial.println(method);
-  }
-  Serial.print("Outside loop: ");
-  Serial.print(motorName);
-  Serial.print(" method: ");
-  Serial.println(method);
+    String motorName = v[0];
+    String method = v[1];
+    String param = v[2];
 
-  // FOR LEFT HAND ============================================================
-  if ( motorName == "left_hand" && method == "open"){
-    thumb.write(0);
-    index.write(0); 
-    // middle.write(0);
-    // ring.write(0);
-    // pinky.write(0);
-  } 
-  else if (motorName == "left_hand" && method == "close"){
-    thumb.write(170);
-    index.write(170);
-    // middle.write(170);
-    // ring.write(170);
-    // pinky.write(170);
-  }
-  // else if (motorName == "left_hand" && method == "wrist"){
-  //   left_hand.servo_wrist(param.toInt());
-  // }
+    String thumb_deg = v[0];
+    String index_deg = v[1];
+    String middle_deg = v[2];
+    String ring_deg = v[3];
+    String pinky_deg = v[4];
+    String wrist_deg = v[5];
 
-  delay(1000);
-    
+    // FOR LEFT HAND ============================================================
+    if ( motorName == "left_hand" && method.substring(0, 4) == "open"){
+      thumb.write(0);
+      index.write(0); 
+      middle.write(0);
+      ring.write(0);
+      pinky.write(0);
+    } 
+    else if (motorName == "left_hand" && method.substring(0, 5) == "close"){
+      thumb.write(180);
+      index.write(180);
+      middle.write(180);
+      ring.write(180);
+      pinky.write(180);
+
+    }
+    else if (motorName == "left_hand" && method == "wrist"){
+      wrist.write(param.toInt());
+    }
+
+    else if (isDigit(motorName.charAt(0))){
+      thumb.write(thumb_deg.toInt());
+      index.write(index_deg.toInt());
+      middle.write(middle_deg.toInt());
+      ring.write(ring_deg.toInt());
+      pinky.write(pinky_deg.toInt());
+      wrist.write(wrist_deg.toInt());
+    }
+  }
+  
+  
 }
