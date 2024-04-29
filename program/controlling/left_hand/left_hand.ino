@@ -40,12 +40,28 @@ void loop() {
     String method = v[1];
     String param = v[2];
 
-    String thumb_deg = v[0];
-    String index_deg = v[1];
-    String middle_deg = v[2];
-    String ring_deg = v[3];
-    String pinky_deg = v[4];
-    String wrist_deg = v[5];
+    String thumb_deg;
+    String index_deg;
+    String middle_deg;
+    String ring_deg ;
+    String pinky_deg;
+    String wrist_deg;
+
+    if (motorName == "lh"){
+      thumb_deg = v[1];
+      index_deg = v[2];
+      middle_deg = v[3];
+      ring_deg = v[4];
+      pinky_deg = v[5];
+      wrist_deg = v[6];
+
+      thumb.write(thumb_deg.toInt());
+      index.write(index_deg.toInt());
+      middle.write(middle_deg.toInt());
+      ring.write(ring_deg.toInt());
+      pinky.write(pinky_deg.toInt());
+      wrist.write(wrist_deg.toInt());
+    }
 
     // FOR LEFT HAND ============================================================
     if ( motorName == "left_hand" && method.substring(0, 4) == "open"){
@@ -67,14 +83,6 @@ void loop() {
       wrist.write(param.toInt());
     }
 
-    else if (isDigit(motorName.charAt(0))){
-      thumb.write(thumb_deg.toInt());
-      index.write(index_deg.toInt());
-      middle.write(middle_deg.toInt());
-      ring.write(ring_deg.toInt());
-      pinky.write(pinky_deg.toInt());
-      wrist.write(wrist_deg.toInt());
-    }
   }
   
   

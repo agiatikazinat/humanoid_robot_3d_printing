@@ -1,7 +1,6 @@
 #include "StringSplitter.h"
 #include "agiat_library.h"
 
-
 #define POS_RAF A0 //Right Ankle Forward
 #define POS_RK A1 // Right Knee
 #define POS_LK A2 //  Left Knee 
@@ -43,9 +42,8 @@ Motor right_side_ankle(46, 48, 50, POS_RA);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(38400);
+  Serial.begin(9600);
 
-  
 }
 
 void loop() {

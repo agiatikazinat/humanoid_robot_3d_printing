@@ -186,25 +186,25 @@ void loop() {
   if (error_x <= 12){
     leftShoulderX.setSpeed(100);
   } else{
-    leftShoulderX.setSpeed(255);
+    leftShoulderX.setSpeed(220);
   }
 
   if (error_y <= 12){
     leftShoulderY.setSpeed(100);
   } else{
-    leftShoulderY.setSpeed(255);
+    leftShoulderY.setSpeed(220);
   }
 
   if (error_z <= 12){
     leftShoulderZ.setSpeed(100);
   } else{
-    leftShoulderZ.setSpeed(255);
+    leftShoulderZ.setSpeed(220);
   }
 
   if (error_bicept <= 12){
     leftBicept.setSpeed(100);
   } else{
-    leftBicept.setSpeed(255);
+    leftBicept.setSpeed(220);
   }
 
 

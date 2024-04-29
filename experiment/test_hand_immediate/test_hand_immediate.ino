@@ -14,17 +14,17 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-    thumb.write(180);
-    index.write(0); 
-    middle.write(0);
-    ring.write(0);
-    pinky.write(0);
+    thumb.write(90);
+    index.write(80); 
+    middle.write(80);
+    ring.write(90);
+    pinky.write(80);
 
   // wrist.write(0);
 
     delay(2000);
 
-    // thumb.write(180);
+    //thumb.write(180);
     // index.write(180); 
     // middle.write(180);
     // ring.write(180);
