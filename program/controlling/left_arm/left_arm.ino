@@ -57,8 +57,12 @@ void setup() {
   leftShoulderZ.setSpeed(200);
   leftBicept.setSpeed(200);
   left_shoulder_x.setDirection(-1);
-  left_shoulder_z.setDirection(-1);
   left_bicept.setDirection(-1);
+
+  target_bicept = left_bicept.current_deg();
+  target_shoulder_x = left_shoulder_x.current_deg();
+  target_shoulder_y = left_shoulder_y.current_deg();
+  target_shoulder_z = left_shoulder_z.current_deg();
 
 }
 
@@ -84,7 +88,7 @@ void loop() {
 
     String motorName = v[0]; 
     String method = v[1];
-    String param = "";
+    String param = v[2];
 
     if (motorName == "la"){
 
@@ -110,15 +114,9 @@ void loop() {
       }
       
       
-    } else {
-
-      motorName = v[0]; 
-      method = v[1];
-      param = v[2];
-
     }
 
-    if (motorName == "current"){
+    if (motorName.substring(0, 10) == "current_la"){
       Serial.print("X: "); Serial.print(left_shoulder_x.current_deg()); 
       Serial.print(" Y: "); Serial.print(left_shoulder_y.current_deg());
       Serial.print(" Z: "); Serial.print(left_shoulder_z.current_deg());
@@ -126,7 +124,7 @@ void loop() {
       
     } 
 
-    if (motorName == "error"){
+    if (motorName.substring(0, 8) == "error_la"){
       Serial.print("X Error: "); Serial.print(error_x); 
       Serial.print(" Y Error: "); Serial.print(error_y);
       Serial.print(" Z Error: "); Serial.print(error_z);
@@ -324,10 +322,10 @@ void loop() {
 //    leftBicept.run(RELEASE);
 //  }
 
-  Serial.print("X: "); Serial.print(left_shoulder_x.current_deg()); 
-  Serial.print(" Y: "); Serial.print(left_shoulder_y.current_deg());
-  Serial.print(" Z: "); Serial.print(left_shoulder_z.current_deg());
-  Serial.print(" Bicept: "); Serial.println(left_bicept.current_deg());
+  // Serial.print("X: "); Serial.print(left_shoulder_x.current_deg()); 
+  // Serial.print(" Y: "); Serial.print(left_shoulder_y.current_deg());
+  // Serial.print(" Z: "); Serial.print(left_shoulder_z.current_deg());
+  // Serial.print(" Bicept: "); Serial.println(left_bicept.current_deg());
 
   delay(1000);
 

@@ -1,15 +1,15 @@
 #include "agiat_library.h"
 #include "StringSplitter.h"
 
-#define POS_LSX A0
-#define POS_LSY A1
-#define POS_LSZ A2
-#define POS_LBI A3
+#define POS_RSX A0
+#define POS_RSY A1
+#define POS_RSZ A2
+#define POS_RBI A3
 
 Shield_Motor right_shoulder_x(POS_RSX);
 Shield_Motor right_shoulder_y(POS_RSY);
 Shield_Motor right_shoulder_z(POS_RSZ);
-Shield_Motor right_bicept(POS_RB);
+Shield_Motor right_bicept(POS_RBI);
 
 AF_DCMotor rightShoulderX(4, MOTOR12_64KHZ);
 AF_DCMotor rightShoulderY(3, MOTOR12_64KHZ);
@@ -21,33 +21,49 @@ int current_shoulder_x = right_shoulder_x.current_deg();
 int current_shoulder_y = right_shoulder_y.current_deg();
 int current_shoulder_z = right_shoulder_z.current_deg();
 
-int target_bicept = current_bicept;
-int target_shoulder_x = current_shoulder_x;
-int target_shoulder_y = current_shoulder_y;
-int target_shoulder_z = current_shoulder_z;
+int target_bicept = right_bicept.current_deg();
+int target_shoulder_x = right_shoulder_x.current_deg();
+int target_shoulder_y = right_shoulder_y.current_deg();
+int target_shoulder_z = right_shoulder_z.current_deg();
 
 const double Kp = 0.5; // Proportional gain
 const double Ki = 0.2; // Integral gain
 const double Kd = 0.1; // Derivative gain
 
-double error_x; 
-double error_y;
-double error_z;
-double error_bicept;
+double error_x = 0; 
+double error_y = 0;
+double error_z = 0;
+double error_bicept = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(28800);
+  Serial.begin(9600);
 
   rightShoulderX.setSpeed(200);
   rightShoulderY.setSpeed(200);
   rightShoulderZ.setSpeed(200);
   rightBicept.setSpeed(200);
 
+  target_bicept = right_bicept.current_deg();
+  target_shoulder_x = right_shoulder_x.current_deg();
+  target_shoulder_y = right_shoulder_y.current_deg();
+  target_shoulder_z = right_shoulder_z.current_deg();
+
+  Serial.print("X target: "); Serial.print(target_shoulder_x); 
+  Serial.print(" Y target: "); Serial.print(target_shoulder_y);
+  Serial.print(" Z target: "); Serial.print(target_shoulder_z);
+  Serial.print(" Bicept target: "); Serial.println(target_bicept);
+
+  Serial.print("X: "); Serial.print(right_shoulder_x.current_deg()); 
+  Serial.print(" Y: "); Serial.print(right_shoulder_y.current_deg());
+  Serial.print(" Z: "); Serial.print(right_shoulder_z.current_deg());
+  Serial.print(" Bicept: "); Serial.println(right_bicept.current_deg());
+
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+
   if (Serial.available() > 0){
     // get the command from controlling program 
     String command = Serial.readStringUntil('\n');
@@ -91,15 +107,11 @@ void loop() {
         target_bicept = fourth_param.toInt();
       }
       
+      Serial.println(target_shoulder_x);
       
-    } else {
+    } 
 
-      motorName = v[0]; 
-      method = v[1];
-      param = v[2];
-    }
-
-    if (motorName == "current"){
+    if (motorName.substring(0, 10) == "current_ra"){
       Serial.print("X: "); Serial.print(right_shoulder_x.current_deg()); 
       Serial.print(" Y: "); Serial.print(right_shoulder_y.current_deg());
       Serial.print(" Z: "); Serial.print(right_shoulder_z.current_deg());
@@ -107,13 +119,21 @@ void loop() {
       
     } 
 
-    if (motorName == "error"){
+    if (motorName.substring(0, 8) == "error_ra"){
       Serial.print("X Error: "); Serial.print(error_x); 
       Serial.print(" Y Error: "); Serial.print(error_y);
       Serial.print(" Z Error: "); Serial.print(error_z);
       Serial.print(" Bicept Error: "); Serial.println(error_bicept);
 
     }
+
+    if (motorName.substring(0, 9) == "target_ra"){
+      Serial.print("X target: "); Serial.print(target_shoulder_x); 
+      Serial.print(" Y target: "); Serial.print(target_shoulder_y);
+      Serial.print(" Z target: "); Serial.print(target_shoulder_z);
+      Serial.print(" Bicept target: "); Serial.println(target_bicept);
+      
+    } 
     
 
     // FOR RIGHT SHOULDER X ===================================================

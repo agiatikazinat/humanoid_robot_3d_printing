@@ -24,11 +24,11 @@ void loop() {
 
     delay(2000);
 
-    thumb.write(180);
-    index.write(180); 
-    middle.write(180);
-    ring.write(180);
-    pinky.write(180);
+    // thumb.write(180);
+    // index.write(180); 
+    // middle.write(180);
+    // ring.write(180);
+    // pinky.write(180);
 
   // wrist.write(180);
 
