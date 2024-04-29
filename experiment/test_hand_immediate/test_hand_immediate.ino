@@ -14,7 +14,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-    thumb.write(0);
+    thumb.write(180);
     index.write(0); 
     middle.write(0);
     ring.write(0);

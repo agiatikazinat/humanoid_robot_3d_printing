@@ -20,7 +20,7 @@
 #define POS_RSZ A15  //Right Shoulder Z-axis
 
 // Head(int se, int m, int ue, int h, int n, int sn)
-Head head(0, 1, 2, 3, 4, 5);
+Head head(2, 3, 4, 5, 6, 7);
 
 
 Motor right_knee(21, 20, 19, POS_RAF);
