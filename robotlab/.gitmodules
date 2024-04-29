@@ -1,0 +1,3 @@
+[submodule "myrobotlab"]
+	path = myrobotlab
+	url = https://github.com/MyRobotLab/myrobotlab.git
