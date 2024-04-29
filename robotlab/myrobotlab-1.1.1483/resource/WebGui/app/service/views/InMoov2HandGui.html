@@ -1,0 +1,601 @@
+<style>
+    #containerHand2{
+    width: 620px;
+    height: 588px;
+    /* border: 1px solid #000; */
+    position: relative;
+    background-image: url("../img/InMoov2/HandBackground.png");
+    z-index: 0;
+    float: none;
+    }
+
+    #containerHand2-cell {
+    width: 620px;
+    }
+
+</style>
+
+<table border="1" class="table table-striped">
+<tr>
+    <td colspan="2">&nbsp;{{onText}} 
+    </td>
+</tr>
+<tr>
+    <link type="text/css" rel="stylesheet" media="all" href="../service/css/InMoov2HandGui.css">
+    <td id="containerHand2-cell">
+        <div id="containerHand2">
+            <!-- Right -->
+            <div id="rightHandIndicator" ng-show="isRight()" ng-click="setPanel('rightHand')" class="rectangleHandIndicatorActive preventHandDragSelect">Right Hand</div>
+            <div id="rightHandIndicator" ng-show="!isRight()" ng-click="setPanel('rightHand')" class="rectangleHandIndicator preventHandDragSelect">Right Hand</div>
+            
+            <div id="rightWristButton" ng-show="isRight()" class="dotHandButtons rightHandSide preventHandDragSelect" ng-click="setPanel('rightWrist')">wrist</div>
+            <div id="rightWristDot" ng-show="isRight()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="rightWristLine" ng-show="isRight()" class="rightHandLine preventHandDragSelect"></div>
+
+            <div id="rightThumbButton" ng-show="isRight()" class="dotHandButtons rightHandSide preventHandDragSelect" ng-click="setPanel('rightThumb')">thumb</div>
+            <div id="rightThumbDot" ng-show="isRight()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="rightThumbLine" ng-show="isRight()" class="rightHandLine preventHandDragSelect"></div>
+
+            <div id="rightIndexButton" ng-show="isRight()" class="dotHandButtons rightHandSide preventHandDragSelect" ng-click="setPanel('rightIndex')">index</div>
+            <div id="rightIndexDot" ng-show="isRight()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="rightIndexLine" ng-show="isRight()" class="rightHandLine preventHandDragSelect"></div>
+
+            <div id="rightMajeureButton" ng-show="isRight()" class="dotHandButtons rightHandSide preventHandDragSelect" ng-click="setPanel('rightMajeure')">majeure</div>
+            <div id="rightMajeureDot" ng-show="isRight()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="rightMajeureLine" ng-show="isRight()" class="rightHandLine preventHandDragSelect"></div>
+
+            <div id="rightRingFingerButton" ng-show="isRight()" class="dotHandButtons rightHandSide preventHandDragSelect" ng-click="setPanel('rightRingFinger')">ringFinger</div>
+            <div id="rightRingFingerDot" ng-show="isRight()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="rightRingFingerLine" ng-show="isRight()" class="rightHandLine preventHandDragSelect"></div>
+
+            <div id="rightPinkyButton" ng-show="isRight()" class="dotHandButtons rightHandSide preventHandDragSelect" ng-click="setPanel('rightPinky')">pinky</div>
+            <div id="rightPinkyDot" ng-show="isRight()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="rightPinkyLine" ng-show="isRight()" class="rightHandLine preventHandDragSelect"></div>
+
+            <!-- Left -->
+            <div id="leftHandIndicator" ng-show="isLeft()" ng-click="setPanel('leftHand')" class="rectangleHandIndicatorActive preventHandDragSelect">Left Hand</div>
+            <div id="leftHandIndicator" ng-show="!isLeft()" ng-click="setPanel('leftHand')" class="rectangleHandIndicator preventHandDragSelect">Left Hand</div>
+            
+            <div id="leftWristButton" ng-show="isLeft()" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="setPanel('leftWrist')">wrist</div>
+            <div id="leftWristDot" ng-show="isLeft()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="leftWristLine" ng-show="isLeft()" class="leftHandLine preventHandDragSelect"></div>
+
+            <div id="leftThumbButton" ng-show="isLeft()" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="setPanel('leftThumb')">thumb</div>
+            <div id="leftThumbDot" ng-show="isLeft()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="leftThumbLine" ng-show="isLeft()" class="leftHandLine preventHandDragSelect"></div>
+
+            <div id="leftIndexButton" ng-show="isLeft()" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="setPanel('leftIndex')">index</div>
+            <div id="leftIndexDot" ng-show="isLeft()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="leftIndexLine" ng-show="isLeft()" class="leftHandLine preventHandDragSelect"></div>
+
+            <div id="leftMajeureButton" ng-show="isLeft()" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="setPanel('leftMajeure')">majeure</div>
+            <div id="leftMajeureDot" ng-show="isLeft()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="leftMajeureLine" ng-show="isLeft()" class="leftHandLine preventHandDragSelect"></div>
+
+            <div id="leftRingFingerButton" ng-show="isLeft()" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="setPanel('leftRingFinger')">ringFinger</div>
+            <div id="leftRingFingerDot" ng-show="isLeft()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="leftRingFingerLine" ng-show="isLeft()" class="leftHandLine preventHandDragSelect"></div>
+
+            <div id="leftPinkyButton" ng-show="isLeft()" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="setPanel('leftPinky')">pinky</div>
+            <div id="leftPinkyDot" ng-show="isLeft()" class="dotHandEnabled preventHandDragSelect"></div>
+            <div id="leftPinkyLine" ng-show="isLeft()" class="leftHandLine preventHandDragSelect"></div>
+
+            <div id="leftBackHandButton" class="dotHandButtons leftHandSide preventHandDragSelect" ng-click="mrl.changeTab('i01')">Back</div>
+            <div id="leftBackHandArrow" class="leftBackHandArrow preventHandDragSelect"></div>
+            
+            <a id="leftDnaHandButton" class="dotHandButtons leftHandSide preventHandDragSelect" href="http://inmoov.fr/hand-and-forarm/" target="_blank"><img src="../img/InMoov2/dna_Activ.png"/></a>
+
+        </div>
+    </td>
+<td>
+<!-- panels begin -->
+
+
+<!--------------rightHand begin ------------------------------>
+
+<!------------------------ rightHand begin ------------------------------>
+<table ng-show="showPanel('rightHand')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('service')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>
+</table>    
+<!------------------------ rightHand end ------------------------------>
+<!------------------------ rightWrist begin ------------------------------>
+<table ng-show="showPanel('rightWrist')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('wrist')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>   
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.rightHand.wrist')"></div>
+    </td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.rightHand.wrist')">Save rightHand.wrist Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ rightWrist end ------------------------------>
+<!------------------------ rightThumb begin ------------------------------>
+<table ng-show="showPanel('rightThumb')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('thumb')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>   
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.rightHand.thumb')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>rightThumb Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress:
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py')">Start rightHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<!--<tr>
+    <td>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="input-group">
+              <span class="input-group-addon" title="FIXME" uib-dropdown on-toggle="toggled(open)">
+                <a href id="simple-dropdown" uib-dropdown-toggle ng-disabled="isSensorsEnabled">pin<span class="caret"></span></a>
+                <ul uib-dropdown-menu>
+                  <li ng-repeat="sensorPins" ng-click=" msg.getActivePins(sensorPins)"><a href>{{sensorPins}}</a></li>
+                </ul>
+              </span>
+          
+              <input type="text" class="form-control" ng-model="sensorThumb" ng-disabled="isSensorsEnabled">
+
+              <span class="input-group-addon" title="FIXME" uib-dropdown on-toggle="toggled(open)">
+                <a href id="simple-dropdown" uib-dropdown-toggle ng-disabled="isSensorsEnabled">threshold<span class="caret"></span></a>
+                <ul uib-dropdown-menu>
+                  <li ng-repeat="newThreshold in sensorThresholds" ><a href ng-click="setThreshold(newThreshold)">{{newThreshold}}</a></li>
+                </ul>
+              </span>
+
+              <input type="text" class="form-control" ng-model="threshold" ng-disabled="isSensorsEnabled">
+              <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="msg.setSensorPins(sensorThumb)">Enable</button>
+            </span>
+        </div>
+        <div>
+            <span class="input-group-btn">
+            <button class="btn btn-default" title="FIXME" ng-click="msg.setSensorPins(sensorThumb)">Test pressure</button>
+            </span>
+            <span class="input-group-btn">
+            <input class="form-control" type="text" id="sensorThumbThreshold" ng-model="sensorThumbThreshold" name="sensorThumbThreshold" placeholder="Result value"/>
+            </span>
+            </div>
+        </div>
+    </div>
+    </td>
+</tr>-->
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.rightHand.thumb')">Save rightHand.thumb Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ rightThumb end ------------------------------>
+<!------------------------ rightIndex begin ------------------------------>
+<table ng-show="showPanel('rightIndex')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('index')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr> 
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.rightHand.index')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>rightIndex Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress:
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py')">Start rightHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<!--tr>
+    <td>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="input-group">
+              <span class="input-group-addon" title="FIXME" uib-dropdown on-toggle="toggled(open)">
+                <a href id="simple-dropdown" uib-dropdown-toggle ng-disabled="isSensorsEnabled">pin<span class="caret"></span></a>
+                <ul uib-dropdown-menu>
+                  <li ng-repeat="sensorPins" ng-click=" msg.getActivePins(sensorPins)"><a href>{{sensorPins}}</a></li>
+                </ul>
+              </span>
+          
+              <input type="text" class="form-control" ng-model="sensorIndex" ng-disabled="isSensorsEnabled">  
+
+              <span class="input-group-addon" title="FIXME" uib-dropdown on-toggle="toggled(open)">
+                <a href id="simple-dropdown" uib-dropdown-toggle ng-disabled="isSensorsEnabled">threshold<span class="caret"></span></a>
+                <ul uib-dropdown-menu>
+                  <li ng-repeat="newThreshold in sensorThresholds" ><a href ng-click="setThreshold(newThreshold)">{{newThreshold}}</a></li>
+                </ul>
+              </span>
+
+              <input type="text" class="form-control" ng-model="threshold" ng-disabled="isSensorsEnabled">
+              <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="msg.setSensorPins(sensorIndex)">Enable</button>
+            </span>
+        </div>
+        <div>
+            <span class="input-group-btn">
+            <button class="btn btn-default" title="FIXME" ng-click="msg.setSensorPins(sensorIndex)">Test pressure</button>
+            </span>
+            <span class="input-group-btn">
+            <input class="form-control" type="text" id="sensorIndexThreshold" ng-model="sensorIndexThreshold" name="sensorIndexThreshold" placeholder="Result value"/>
+            </span>
+            </div>
+        </div>
+    </div>
+    </td>
+</tr>-->
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.rightHand.index')">Save rightHand.index Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ rightIndex end ------------------------------>
+<!------------------------ rightMajeure begin ------------------------------>
+<table ng-show="showPanel('rightMajeure')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('majeure')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.rightHand.majeure')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>rightMajeure Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress:
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py')">Start rightHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.rightHand.majeure')">Save rightHand.majeure Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ rightMajeure end ------------------------------>
+<!------------------------ rightRingFinger begin ------------------------------>
+<table ng-show="showPanel('rightRingFinger')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('ringFinger')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.rightHand.ringFinger')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>rightRingFinger Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress:
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py')">Start rightHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.rightHand.ringFinger')">Save rightHand.ringFinger Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ rightRingFinger end ------------------------------>
+<!------------------------ rightPinky begin ------------------------------>
+<table ng-show="showPanel('rightPinky')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('pinky')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.right.png"/>
+        <label>rightHand is:</label>&nbsp;
+        <img ng-src="{{(isRight())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.rightHand.pinky')"></div>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress:
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensor_start.py')">Start rightHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_rightHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.rightHand.pinky')">Save rightHand.pinky Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ rightPinky end ------------------------------>
+
+<!------------- rightHand end ------------------------------>
+
+<!--------------leftHand begin ------------------------------>
+
+<!------------------------ leftHand begin ------------------------------>
+<table ng-show="showPanel('leftHand')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('service')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>
+</table>    
+<!------------------------ leftHand end ------------------------------>
+<!------------------------ leftWrist begin ------------------------------>
+<table ng-show="showPanel('leftWrist')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('wrist')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.leftHand.wrist')"></div>
+    </td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.leftHand.wrist')">Save leftHand.wrist Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ leftWrist end ------------------------------>
+<!------------------------ leftThumb begin ------------------------------>
+<table ng-show="showPanel('leftThumb')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('thumb')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.leftHand.thumb')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>leftThumb Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py')">Start leftHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.leftHand.thumb')">Save leftHand.thumb Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ leftThumb end ------------------------------>
+<!------------------------ leftIndex begin ------------------------------>
+<table ng-show="showPanel('leftIndex')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('index')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.leftHand.index')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>leftIndex Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py')">Start leftHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.leftHand.index')">Save leftHand.index Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ leftIndex end ------------------------------>
+<!------------------------ leftMajeure begin ------------------------------>
+<table ng-show="showPanel('leftMajeure')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('majeure')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.leftHand.majeure')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>leftMajeure Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py')">Start leftHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.leftHand.majeure')">Save leftHand.majeure Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ leftMajeure end ------------------------------>
+<!------------------------ leftRingFinger begin ------------------------------>
+<table ng-show="showPanel('leftRingFinger')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('ringFinger')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.leftHand.ringFinger')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>leftRingFinger Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py')">Start leftHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.leftHand.ringFinger')">Save leftHand.ringFinger Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ leftRingFinger end ------------------------------>
+<!------------------------ leftPinky begin ------------------------------>
+<table ng-show="showPanel('leftPinky')" class="inmoov-sub-panel table table-striped">
+<tr>
+    <td>
+        <!------THIS FOR THE HOVER ICON WITH PEERS----------------------->
+        <img src="../img/InMoov2/markerBlue_right.png" onmouseover="this.src='../img/InMoov2/markerGreen_right.png';" onmouseout="this.src='../img/InMoov2/markerBlue_right.png';" height="14" ng-click="filterPeers('pinky')"/><img src="../img/InMoov2/markerBlue_left.png" onmouseover="this.src='../img/InMoov2/markerGreen_left.png';" onmouseout="this.src='../img/InMoov2/markerBlue_left.png';" height="18" ng-click="filterPeers(null)"/>
+        <!--------------------------------------------------------------->
+        <img src="../InMoov2Hand.png"/>
+        <label>leftHand is:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <img ng-src="{{(isLeft())?'../../green.png':'../../red.png'}}"/>
+    </td>
+</tr>    
+<tr>
+    <td>
+        <div class="tab-content" service-body panel="mrl.getPanel('i01.leftHand.pinky')"></div>
+    </td>
+</tr>
+<tr>
+    <td><img width="80" height="55" src="../img/InMoov2/finger-Tip.png"/> 
+        <label>leftPinky Sensor:</label>
+    </td>
+</tr>
+<tr>
+    <td>This is a work in progress
+    <button class="btn btn-default" title="This will load: resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensor_start.py')">Start leftHand Sensor</button>
+    <button class="btn btn-default" title="This will print the results in the python tab" ng-click="msg.loadFile('resource/InMoov2/system/startScripts/i01_leftHandSensors_Value.py')">Test sensor values</button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button class="btn btn-default" ng-click="mrl.sendTo('runtime', 'export', 'i01.leftHand.pinky')">Save leftHand.pinky Config</button>
+    </td>
+</tr>
+</table>
+<!------------------------ leftPinky end ------------------------------>
+
+<!------------- leftHand end ------------------------------>
+<!-- panels end -->
+</td></tr></table>

@@ -1,0 +1,313 @@
+
+
+.preventGuiDragSelect{
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+.GuiDisplays {
+    position:absolute;
+    width:100px;
+    cursor: pointer;
+    display: inline-block;
+    /* 
+    overflow: hidden;
+    break the glow
+    */
+}
+
+.GuiDisplays:hover {
+    animation: none;
+    -webkit-filter: saturate(400%) drop-shadow(0px 0px 8px rgba(255, 255, 255, 1));
+}
+
+.GuiDisplays:active {
+    -webkit-filter: saturate(400%) drop-shadow(0px 0px 8px rgba(20, 255, 255, 1));
+    cursor:pointer;
+}
+
+.GuiDisplaysActive {
+    position:absolute;
+    color: #f38094;
+    cursor: pointer;
+    display: inline-block;
+    cursor: default;
+}
+
+
+/* -------------------    Left Buttons  --------------------*/
+
+#InMoovGuiDisplay img{
+    position:absolute;
+    left: 157px;
+    top: 150px;
+}
+
+/* ------------------------------------*/
+
+#rightHandGuiDisplay img{
+    position:absolute;
+    left: 141px;
+    top: 199px;
+}
+
+/* ------------------------------------*/
+
+#leftHandGuiDisplay img{
+    position:absolute;
+    left: 392px;
+    top: 199px;
+}
+
+/* ------------------------------------*/
+
+#headGuiDisplay img{
+    position:absolute;
+    left: 284px;
+    top: 145px;
+}
+
+/* ------------------------------------*/
+
+#rightArmGuiDisplay img{
+    position:absolute;
+    left: 191px;
+    top: 183px;
+}
+
+/* ------------------------------------*/
+
+#leftArmGuiDisplay img{
+    position:absolute;   
+    left: 315px;
+    top: 183px;
+}
+
+/* ------------------------------------*/
+
+#torsoGuiDisplay img{
+    position:absolute;
+    left: 278px;
+    top: 216px;
+}
+
+/* ------------------------------------*/
+
+#rightLegGuiDisplay img{
+    position:absolute;   
+    left: 275px;
+    top: 262px;
+}
+
+/* ------------------------------------*/
+
+
+#leftLegGuiDisplay img{
+    position:absolute;
+    left: 304px;
+    top: 262px;
+}
+
+/* ------------------------------------*/
+
+
+#batteryGuiDisplay img{
+    position:absolute;
+    left: 514px;
+    top: 511px;
+}
+
+/* ------------------------------------*/
+
+
+#dnaGuiDisplay img{
+    position:absolute;
+    width:155px;
+    left: 33px;
+    top: 28px;
+}
+
+/* ------------------------------------*/
+
+.homeGuiButtons:hover {
+    color: #FFFFFF;
+}
+
+.homeGuiButtons:active {
+    color: #FFFFFF;
+    text-shadow: 0 0 3px #414b4e, 0 0 10px #FFFFFF, 0 0 10px #FFFFFF, 0 0 10px #FFFFFF;
+}
+
+.homeGuiButtons{
+    position:absolute;
+    font-family: helvetica,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #29d4ff;
+    cursor: pointer;
+    display: inline-block;
+    /* 
+    overflow: hidden;
+    break the glow
+    */
+    height: 24px;
+    max-height: 24px;
+    text-shadow: 0 0 3px #414b4e, 0 0 7px #76bed3, 0 0 7px #8ddaefd9;
+}
+
+.homeGuiButtonsActive{
+    position:absolute;
+    font-family: helvetica,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #f38094;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    max-height: 24px;
+    text-shadow: 0 0 3px #ff1414, 0 0 10px #FFFFFF;
+    cursor: default;
+}
+
+#homeGuiButton{
+    left: 41px;
+    top: 528px;
+}
+
+/* ------------------------------------*/
+
+.languageGuiButtons:hover {
+    color: #FFFFFF;
+}
+
+.languageGuiButtons:active {
+    color: #FFFFFF;
+    text-shadow: 0 0 3px #414b4e, 0 0 10px #FFFFFF, 0 0 10px #FFFFFF, 0 0 10px #FFFFFF;
+}
+
+.languageGuiButtons{
+    position:absolute;
+    font-family: helvetica,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #29d4ff;
+    cursor: pointer;
+    display: inline-block;
+    /* 
+    overflow: hidden;
+    break the glow
+    */
+    height: 24px;
+    max-height: 24px;
+    text-shadow: 0 0 3px #414b4e, 0 0 7px #76bed3, 0 0 7px #8ddaefd9;
+}
+
+.languageGuiButtonsActive{
+    position:absolute;
+    font-family: helvetica,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #f38094;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    max-height: 24px;
+    text-shadow: 0 0 3px #ff1414, 0 0 10px #FFFFFF;
+    cursor: default;
+}
+
+#languageGuiButton{
+    left: 41px;
+    top: 28px;
+}
+
+/* ------------------------------------*/
+
+.helpGuiButtons:hover {
+    color: #FFFFFF;
+}
+
+.helpGuiButtons:active {
+    color: #FFFFFF;
+    text-shadow: 0 0 3px #414b4e, 0 0 10px #FFFFFF, 0 0 10px #FFFFFF, 0 0 10px #FFFFFF;
+}
+
+.helpGuiButtons{
+    position:absolute;
+    font-family: helvetica,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #29d4ff;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    max-height: 24px;
+    text-shadow: 0 0 3px #414b4e, 0 0 7px #76bed3, 0 0 7px #8ddaefd9;
+}
+
+.helpGuiButtonsActive{
+    position:absolute;
+    font-family: helvetica,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: #f38094;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    max-height: 24px;
+    text-shadow: 0 0 3px #ff1414, 0 0 10px #FFFFFF;
+    cursor: default;
+}
+
+
+#helpGuiButton{
+    right: 41px;
+    top: 28px;
+}
+
+/* ------------------------------------*/
+
+.inmoov-menu-button {
+    -webkit-filter: box-shadow: inset 0px 0px 4px 50px rgba(0,0,0,1);
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    cursor:pointer;
+    z-index: 100;
+}
+
+.InMoovDIV{
+    z-index:1 !important;
+    width: 300px !important;
+    height: 301px !important;
+    transform: none !important;
+    left: 157px;
+    top: 150px;
+    margin-top: -1px;
+}
+
+.InMoovIMG{
+    width: 300px !important;
+    height: 301px !important;
+    transform: none !important;
+    margin-top: -1px;
+}
+
+.inMoovButton:hover {
+    -webkit-filter: saturate(200%) drop-shadow(0px 0px 10px rgba(255, 255, 255, 1));
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.inMoovButton:active {
+    -webkit-transition: all 1.2s linear;
+    -o-transition: all 1.2s linear;
+    transition: all 1.2s linear;
+    -webkit-filter: saturate(400%) drop-shadow(0px 0px 15px rgba(255, 255, 255, 1));
+}
