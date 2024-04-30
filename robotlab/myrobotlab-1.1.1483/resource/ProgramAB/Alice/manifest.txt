@@ -1,0 +1,3 @@
+description=A.L.I.C.E., also referred to as Alicebot, or simply Alice classical ELIZA program
+locale=en-US
+image=bot.png

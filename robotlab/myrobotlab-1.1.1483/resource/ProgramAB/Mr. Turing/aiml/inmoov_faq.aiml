@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
+  <!--  InMoov category / catch all. -->
+<category>
+ <pattern>FAQ</pattern>
+  <template>
+    **Here is a list of frequent questions related to InMoov:**
+      `-What is InMoov?`(http://inmoov.fr)
+      `-What servos can we use?` (list: http://inmoov.fr/default-hardware-map/)
+      `-What power supply do we need?` (6V 50A for a standard build or a 6V 12AH battery)
+      `-How many Arduinos do we need?` (2 x Arduino Mega 2560 for a standard build, + 1 x nano Arduino for the Neopixel)
+      `-What do the Nervo Boards do?` (Makes wiring a lot easier for beginners 🙂 )
+      `-How many Nervo Boards for a complete robot?` (2 Nervo Boards)
+      `-What is a standard build?` (A build using the build instruction found on the Inmoov.fr web site)
+      `-How do I update InMoov2?` (It's best to reinstall MRL fresh in a new directory, save your data/config to paste them in the new version.)
+    </template>
+</category> 
+  
+<category>
+  <pattern>* INMOOV</pattern>
+  <template><srai>INTRODUCTION</srai></template>
+</category>
+  
+<category><pattern>INMOOV *</pattern>
+  <template><srai>INTRODUCTION</srai></template>
+</category>
+  
+<category>
+  <pattern>* INMOOV *</pattern>
+  <template><srai>INTRODUCTION</srai></template>
+</category>
+  
+<category>
+  <pattern>INMOOV</pattern>
+  <template><srai>INTRODUCTION</srai></template>
+</category>
+
+<category><pattern>INTRODUCTION</pattern>
+  <template><think>
+        <set name="introduction">started</set>
+      </think>
+      <think>
+        <set name="topic">introduction</set>
+      </think>
+    Are you building an InMoov Robot?
+    Please answer with yes or no.</template>
+</category>
+
+<topic name="INTRODUCTION">
+<category><pattern># YES #</pattern><that># PLEASE ANSWER WITH YES OR NO #</that>
+<template><random>
+      <li>
+      That's great.
+      </li>
+      <li>
+      Cool.
+      </li>
+        </random>
+  What name did you give him ?</template>
+</category></topic>
+
+<topic name="INTRODUCTION">
+<category><pattern># NO #</pattern><that># PLEASE ANSWER WITH YES OR NO #</that>
+<template>Ok. Do you have a question about InMoov ?</template>
+</category></topic>
+
+<topic name="INTRODUCTION">
+<category><pattern>#</pattern><that># WHAT NAME DID YOU GIVE HIM #</that>
+<template><set name="questionfirstinit">So, his name is <star/> , say yes or no</set>
+        <think>
+          <set name="tmpname">
+            <star/>
+          </set>
+        </think></template>
+</category></topic>
+
+<topic name="INTRODUCTION">
+<category><pattern># YES #</pattern><that># HIS NAME IS #</that>
+<template><random>
+      <li>
+      <get name="tmpname"/> is a nice name!
+      </li>
+      <li>
+      Very nice name, <get name="tmpname"/> is great!
+      </li>
+        </random>
+      <srai>FAQ</srai>
+  <think><set name="botname"><get name="tmpname"/></set></think>
+  <think><set name="topic">default</set></think></template>
+</category></topic>
+
+<topic name="INTRODUCTION">
+<category><pattern># NO #</pattern><that># HIS NAME IS #</that>
+<template>Ah ok, we restart.
+  What name did you give him ?</template>
+</category></topic>
+
+<topic name="INTRODUCTION">
+<category><pattern># YES #</pattern><that># DO YOU HAVE A QUESTION ABOUT INMOOV #</that>
+<template><random>
+      <li>
+      I see,
+      </li>
+      <li>
+      Ok,
+      </li>
+        </random>
+      <srai>FAQ</srai>
+  <think>
+    <set name="topic">default</set>
+  </think></template>
+</category></topic>
+
+<topic name="INTRODUCTION">
+<category><pattern># NO #</pattern><that># DO YOU HAVE A QUESTION ABOUT INMOOV #</that>
+<template>Ok.
+  <think>
+    <set name="topic">default</set>
+  </think></template>
+</category></topic>  
+  
+<category>
+  <pattern>UPDATE INMOOV</pattern>
+  <template>It's best to reinstall MRL fresh in a new directory, save your data/config to paste them in the new version.</template>
+</category>
+  
+<category>
+ <pattern>* UPDATE INMOOV</pattern>
+  <template>
+      <srai>UPDATE INMOOV</srai>
+    </template>
+</category>
+  
+<category>
+  <pattern>* UPDATE INMOOV *</pattern>
+    <template>
+      <srai>UPDATE INMOOV</srai>
+    </template>
+</category>
+  
+<category>
+  <pattern>* UPDATE INMOOV2</pattern>
+    <template>
+      <srai>UPDATE INMOOV</srai>
+    </template>
+</category>
+  
+<category>
+  <pattern>* UPDATE INMOOV2 *</pattern>
+    <template>
+      <srai>UPDATE MRL</srai>
+    </template>
+</category>  
+
+</aiml>
