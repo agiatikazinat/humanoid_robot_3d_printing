@@ -14,8 +14,8 @@ minOut: 40.0
 peers: null
 pin: '9'
 rest: 90.0
-speed: 45.0
-sweepMax: null
-sweepMin: null
+speed: 164.0
+sweepMax: 180.0
+sweepMin: 40.0
 synced: null
 type: Servo
