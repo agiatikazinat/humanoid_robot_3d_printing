@@ -51,7 +51,7 @@ print(dir(scene))
 print("-------- scene end ---------------")
 
   
-"""
+
 obj = scene.objects["i01.head.jaw"]
 print("-------- obj begin ---------------")
 print(dir(obj))
@@ -87,7 +87,6 @@ print("mat_rot", mat_rot)
 
 #obj.localOrientation = mat_rot.to_3x3()
 
-"""
 
 # TODO - derive from json object - so we can control correct encoding
 # http://stackoverflow.com/questions/3768895/python-how-to-make-a-class-json-serializable
