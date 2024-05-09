@@ -4,7 +4,7 @@ baby:who
 bestfriend:who
 birthday:when
 birthplace:where
-boot.end:1714966582506
+boot.end:1715292154261
 boyfriend:who
 brother:who
 cat:what
@@ -35,9 +35,11 @@ favoritesport:what
 favoritetvshow:what
 firstinit:unknown
 firstname:what
+forceMicroOnIfSleeping:false
 friend:who
 gender:unknown
 girlfriend:who
+gpt3:enabled
 grandfather:who
 grandmother:who
 hair:what
@@ -63,12 +65,14 @@ nephew:who
 newcontact:unknown
 newpattern:NORESP
 niece:who
+openCVFaceRecognizerActivated:true
 orientation:unknown
 phonenumber:unknown
 province:which
 religion:unknown
 residence:where
 road:which
+robotCanMoveHeadWhileSpeaking:true
 she:who
 sign:which
 sister:who
@@ -82,6 +86,6 @@ topic:unknown
 town:which
 userDescription:no personal description
 voicemailnumber:unknown
-wake.start:1714966588195
+wake.start:1715292162835
 we:who
 wife:who

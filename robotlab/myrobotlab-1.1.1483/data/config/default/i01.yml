@@ -4,7 +4,7 @@ customSound: false
 execScript: false
 flashOnErrors: true
 flashOnPir: false
-forceMicroOnIfSleeping: true
+forceMicroOnIfSleeping: false
 healthCheckActivated: false
 healthCheckFlash: false
 healthCheckTimerMs: 60000
@@ -12,6 +12,9 @@ heartbeat: true
 heartbeatFlash: false
 heartbeatInterval: 3000
 listeners:
+- callback: onI01
+  listener: powerUp
+  method: i01
 - callback: onBoot
   listener: i01
   method: publishBoot
@@ -228,7 +231,7 @@ pirOnFlash: true
 pirPlaySounds: true
 pirWakeUp: true
 reportOnBoot: true
-robotCanMoveHeadWhileSpeaking: false
+robotCanMoveHeadWhileSpeaking: true
 shutdownStartupSpeed: 50.0
 sleepTimeoutMs: 300000
 startupSound: true
