@@ -99,7 +99,7 @@ peers:
     name: i01.gpt3
     type: Gpt3
   head:
-    autoStart: false
+    autoStart: true
     name: i01.head
     type: InMoov2Head
   headTracking:
@@ -241,4 +241,4 @@ systemEventStateChange: true
 trackingTimeoutMs: 10000
 type: InMoov2
 unlockInsult: forgive me
-virtual: false
+virtual: true

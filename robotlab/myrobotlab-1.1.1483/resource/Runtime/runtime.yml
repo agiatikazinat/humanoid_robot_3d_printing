@@ -8,4 +8,4 @@ peers: null
 registry: [
   ]
 type: Runtime
-virtual: false
+virtual: true

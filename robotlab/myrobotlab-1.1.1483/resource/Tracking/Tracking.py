@@ -49,7 +49,7 @@ pid.setPID("y",5.0, 5.0, 0.1)
 # connect to the Arduino ( 0 = camera index )
 tracker.connect(opencv, xServo, yServo)
 
-opencv.broadcastState();
+opencv.broadcastState()
 sleep(1)
 
 # Gray & PyramidDown make face tracking

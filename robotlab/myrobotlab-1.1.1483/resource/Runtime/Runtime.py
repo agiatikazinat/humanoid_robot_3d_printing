@@ -6,7 +6,7 @@
 #########################################
 
 # prints the days hours minutes your MRL has been alive
-print runtime.getUptime()
+print(runtime.getUptime())
 
 # print the id of your instance of mrl
 print ("my mrl version is {}".format(runtime.getVersion()))

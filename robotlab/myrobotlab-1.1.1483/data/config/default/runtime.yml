@@ -9,4 +9,4 @@ registry: [
   ]
 resource: resource
 type: Runtime
-virtual: false
+virtual: true

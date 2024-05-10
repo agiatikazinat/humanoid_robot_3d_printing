@@ -12,4 +12,4 @@ listeners: [
 nativeViewer: true
 peers: null
 type: OpenCV
-webViewer: false
+webViewer: true
