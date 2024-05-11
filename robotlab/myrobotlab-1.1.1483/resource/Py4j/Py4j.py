@@ -70,9 +70,9 @@ class InMoov2(Service):
 
 # TODO dynamically add classes that you don't bother to check in
 
-# class Runtime(Service):
-#     def __init__(self, name):
-#         super().__init__(name)
+class Runtime(Service):
+    def __init__(self, name):
+        super().__init__(name)
 
 
 # FIXME - REMOVE THIS - DO NOT SET ANY GLOBALS !!!!

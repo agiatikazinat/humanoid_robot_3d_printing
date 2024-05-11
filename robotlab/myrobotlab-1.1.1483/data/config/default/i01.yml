@@ -231,7 +231,7 @@ pirOnFlash: true
 pirPlaySounds: true
 pirWakeUp: true
 reportOnBoot: true
-robotCanMoveHeadWhileSpeaking: true
+robotCanMoveHeadWhileSpeaking: false
 shutdownStartupSpeed: 50.0
 sleepTimeoutMs: 300000
 startupSound: true
