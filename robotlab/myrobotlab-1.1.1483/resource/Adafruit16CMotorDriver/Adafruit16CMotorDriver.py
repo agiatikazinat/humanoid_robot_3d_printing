@@ -9,18 +9,19 @@
 # drive a motor.
 #
 # config
+import time
 port = "COM99"
 
 # runtime.start("WebGui", "WebGui");
-arduino = runtime.start("Arduino", "Arduino");
+arduino = runtime.start("Arduino", "Arduino")
 arduino.connect(port)
-sleep(5)
+time.sleep(5)
 ada = runtime.start("Ada","Adafruit16CServoDriver")
 
 # ada.setController(arduino,"1","0x40")
 ada.attach(arduino,"1","0x40")
-sleep(2)
-motor01 = runtime.start("motor01", "Motor");
-motor01.setPwmPins(0,1);
-motor01.attach(ada);
-motor01.move(0.3);
+time.sleep(2)
+motor01 = runtime.start("motor01", "Motor")
+motor01.setPwmPins(0,1)
+motor01.attach(ada)
+motor01.move(0.3)

@@ -27,8 +27,8 @@ ina219.attach(arduino,"1","0x40")
 #
 # This sections shows how to get the values from the service
 ina219.refresh()
-print ina219.busVoltage," mV bus voltage"
-print ina219.shuntResistance, "Ohms shunt resistance"
-print ina219.shuntVoltage ," mV accross the shunt resistor"
-print ina219.current, " mA current"
-print ina219.power, " mW power"
+print(ina219.busVoltage," mV bus voltage")
+print(ina219.shuntResistance, "Ohms shunt resistance")
+print(ina219.shuntVoltage ," mV accross the shunt resistor")
+print(ina219.current, " mA current")
+print(ina219.power, " mW power")
