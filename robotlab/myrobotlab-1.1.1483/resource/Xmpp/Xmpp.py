@@ -12,7 +12,7 @@ xmpp.addListener("python","publishMessage")
 xmpp.connect("talk.google.com", 5222, "robot01@myrobotlab.org", "xxxxxxx")
 
 # gets list of all the robots friends
-print xmpp.getRoster()
+print( xmpp.getRoster())
 
 # set your online status
 xmpp.setStatus(True, "online all the time")
@@ -28,4 +28,4 @@ xmpp.sendMessage("hello this is robot01 - the current heatbed temperature is 40 
 
 def publishMessage():
 	msg = msg_xmpp_publishMessage.data[0]
-	print msg.getFrom(), " says " , msg.getBody()
+	print( msg.getFrom(), " says " , msg.getBody())

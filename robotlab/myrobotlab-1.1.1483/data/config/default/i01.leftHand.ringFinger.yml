@@ -2,7 +2,7 @@
 autoDisable: true
 clip: true
 controller: i01.left
-enabled: true
+enabled: false
 idleTimeout: 3000
 inverted: false
 listeners: [

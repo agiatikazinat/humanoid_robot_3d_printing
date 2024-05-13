@@ -1,24 +1,47 @@
 address:where
 age:how many
 baby:who
+batteryInSystem:true
 bestfriend:who
 birthday:when
 birthplace:where
-boot.end:1715487041982
+boot.end:1715629577498
+botState:awake
+botname:Scott
 boyfriend:who
 brother:who
 cat:what
+checkedfamiliarname:true
+checkednameoruri:false
 city:which
+contactaddress:unknown
+contactbirthday:matthew mcconaughey
+contactid:matthew mcconaughey
+contactname:matthew mcconaughey
+contactquery:BIRTHDAY
+contacttype:
+contacturi:unknown
 country:which
 county:which
+customSound:true
 customname:scott
 daughter:who
 description:what
-dialnumber:unknown
+dialnumber:matthew mcconaughey
+displayname:matthew mcconaughey
 dog:who
 email:what
+emailaddress:matthew mcconaughey
+emotion:wake
 employer:who
 equalto:false
+externalname:unknown
+face:wake
+familiarcontactid:matthew mcconaughey
+familiarcontactname:who
+familiarname:matthew mcconaughey
+familiarpredicate:UNKNOWN
+familiarpronoun:unknown
 father:who
 favoriteactor:who
 favoriteactress:who
@@ -33,9 +56,10 @@ favoritemovie:what
 favoritesong:what
 favoritesport:what
 favoritetvshow:what
-firstinit:started
+firstinit:ok
 firstname:what
 forceMicroOnIfSleeping:false
+forceaddcontact:false
 friend:who
 gender:unknown
 girlfriend:who
@@ -43,26 +67,34 @@ gpt3:enabled
 grandfather:who
 grandmother:who
 hair:what
-has:what
+has:this phone
 he:who
 husband:who
 iama:human
 img:../service/img/user_unknown.png
 insultPoints:0
+isacontacturi:false
+isafamiliarname:false
 isaname:<img src="../Gpt3.png"/>
+isanemailaddress:false
 isanumber:false
-it:right hand
+isaphonenumber:false
+it:this phone
 jsenabled:true
 lastname:what
 latitude:which
+learnpattern:unknown
 likes:what
 location:where
 lockInsult:off
 longitute:which
+messagebody:unknown
 meta:set
 middlename:what
+modecom:QUERY
 mother:who
-name:Human
+multipleids:false
+name:boss
 nephew:who
 newcontact:unknown
 newpattern:NORESP
@@ -71,10 +103,12 @@ openCVFaceRecognizerActivated:true
 orientation:unknown
 phonenumber:unknown
 province:which
+questionfirstinit:Would you like me to use my vision to memorise your face along your name, boss?
 religion:unknown
 residence:where
 road:which
 robotCanMoveHeadWhileSpeaking:true
+savedtopic:playing with 30
 she:who
 sign:which
 sister:who
@@ -85,11 +119,12 @@ status:what
 street:which
 them:who
 there:where
-topic:default
+tmpname:boss
+topic:unknown
 town:which
 userDescription:no personal description
 voicemailnumber:unknown
-wake.start:1715487047667
+wake.start:1715629581789
 we:who
 wife:who
 yoloReturn:

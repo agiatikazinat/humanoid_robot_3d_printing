@@ -7,8 +7,10 @@ flip: false
 grabberType: OpenCV
 inputFile: null
 inputSource: camera
-listeners: [
-  ]
+listeners:
+- callback: onOpenCVData
+  listener: i01
+  method: publishOpenCVData
 nativeViewer: true
 peers: null
 type: OpenCV

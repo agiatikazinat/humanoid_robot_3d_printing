@@ -12,11 +12,11 @@ streamer = runtime.start("streamer","VideoStreamer")
 streamer.attach(opencv)
 
 # add a pyramid down filter and gray to minimize the data
-opencv.addFilter("pyramidDown", "PyramidDown");
-opencv.addFilter("gray", "Gray");
+opencv.addFilter("pyramidDown", "PyramidDown")
+opencv.addFilter("gray", "Gray")
 
 # start the camera
-opencv.capture();
+opencv.capture()
 #added sleep in order to give opencv the time to "warm up" the cam
 sleep(3)
 

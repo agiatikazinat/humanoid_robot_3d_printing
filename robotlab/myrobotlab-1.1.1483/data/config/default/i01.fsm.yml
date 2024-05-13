@@ -39,4 +39,10 @@ transitions:
 - event: setup
   from: idle
   to: setup
+- event: track
+  from: idle
+  to: isTracking
+- event: stopTrack
+  from: isTracking
+  to: idle
 type: FiniteStateMachine

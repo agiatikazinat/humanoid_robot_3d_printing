@@ -1,7 +1,18 @@
 !!org.myrobotlab.service.config.MarySpeechConfig
 blocking: false
-listeners: [
-  ]
+listeners:
+- callback: onEndSpeaking
+  listener: i01.ear
+  method: publishEndSpeaking
+- callback: onEndSpeaking
+  listener: i01.mouthControl
+  method: publishEndSpeaking
+- callback: onStartSpeaking
+  listener: i01.ear
+  method: publishStartSpeaking
+- callback: onStartSpeaking
+  listener: i01.mouthControl
+  method: publishStartSpeaking
 mute: false
 peers:
   audioFile:
@@ -12,4 +23,4 @@ speechRecognizers:
 - i01.ear
 substitutions: null
 type: MarySpeech
-voice: null
+voice: Obadiah

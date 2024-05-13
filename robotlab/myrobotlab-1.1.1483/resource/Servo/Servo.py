@@ -60,7 +60,7 @@ sleep(2)
 # fast sweep 10 seconds
 print("fast sweep")
 servo01.setSpeed(300)
-servo01.sweep(0, 180);
+servo01.sweep(0, 180)
 sleep(10)
 servo01.stop()
 

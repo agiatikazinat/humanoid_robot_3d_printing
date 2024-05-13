@@ -4,4 +4,5 @@ def batterylevel():
   if runtime.isStarted('i01.mouth'):
     i01_mouth.speak(str(batterieLevel)+" percent")
   i01.finishedGesture()
-  
+
+batterylevel()

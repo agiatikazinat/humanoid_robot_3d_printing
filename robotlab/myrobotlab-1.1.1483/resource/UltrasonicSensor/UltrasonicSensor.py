@@ -23,7 +23,7 @@ sr04.attach(arduino, 12, 11)
 sr04.addRangeListener(python)
  
 def onRange(distance):
-  print "distance ", distance, " cm"
+  print ("distance ", distance, " cm")
  
 # event driven ranging
 # start ranging for 5 seconds - the publishRange(distance) will be
@@ -36,8 +36,8 @@ sleep(5)
 sr04.stopRanging()
  
 # range can also be retreieved in a blocking call
-print "on demand range is ", sr04.range()
+print ("on demand range is ", sr04.range())
  
 # you can also ping - ping does not do any calculations
 # it simply returns the duration in microseconds of the ping
-print "ping ", sr04.ping(), " mircoseconds"
+print ("ping ", sr04.ping(), " mircoseconds")

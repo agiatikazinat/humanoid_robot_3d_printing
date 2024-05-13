@@ -1,6 +1,6 @@
 !!org.myrobotlab.service.config.InMoov2Config
-batteryInSystem: false
-customSound: false
+batteryInSystem: true
+customSound: true
 execScript: false
 flashOnErrors: true
 flashOnPir: false
@@ -231,7 +231,7 @@ pirOnFlash: true
 pirPlaySounds: true
 pirWakeUp: true
 reportOnBoot: true
-robotCanMoveHeadWhileSpeaking: false
+robotCanMoveHeadWhileSpeaking: true
 shutdownStartupSpeed: 50.0
 sleepTimeoutMs: 300000
 startupSound: true

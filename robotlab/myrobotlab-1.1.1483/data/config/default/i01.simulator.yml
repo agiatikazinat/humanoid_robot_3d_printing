@@ -1,9 +1,11 @@
 !!org.myrobotlab.service.config.JMonkeyEngineConfig
 cameraLookAt: i01.torso.lowStom
-listeners: [
-  ]
-models: [
-  ]
+listeners:
+- callback: onSelected
+  listener: i01.servoMixer
+  method: getSelectedPath
+models:
+- VinMoov5.j3o
 multiMapped:
   i01.leftHand.index:
   - i01.leftHand.index
@@ -481,5 +483,8 @@ nodes:
       minX: 0.0
       minY: 60.0
     rotationMask: x
+  camera:
+    mapper: null
+    rotationMask: null
 peers: null
 type: JMonkeyEngine

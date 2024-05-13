@@ -6,9 +6,9 @@ listeners:
   method: publishText
 listening: true
 peers: null
-recording: false
+recording: true
 textListeners:
-- i01.chatBot
+- i01.chatBot@tiresome-astroboy
 type: WebkitSpeechRecognition
-wakeWord: null
+wakeWord: Hey Scott
 wakeWordIdleTimeoutSeconds: 10
