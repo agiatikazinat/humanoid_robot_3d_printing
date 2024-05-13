@@ -5,7 +5,7 @@ listeners: [
 peers:
   serial:
     autoStart: true
-    name: arduino.serial
+    name: Arduino.serial
     type: Serial
 port: null
 type: Arduino

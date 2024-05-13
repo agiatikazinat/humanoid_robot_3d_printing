@@ -11,7 +11,7 @@ cat:what
 city:which
 country:which
 county:which
-customname:unknown
+customname:scott
 daughter:who
 description:what
 dialnumber:unknown
@@ -33,7 +33,7 @@ favoritemovie:what
 favoritesong:what
 favoritesport:what
 favoritetvshow:what
-firstinit:unknown
+firstinit:started
 firstname:what
 forceMicroOnIfSleeping:false
 friend:who
@@ -46,10 +46,12 @@ hair:what
 has:what
 he:who
 husband:who
+iama:human
 img:../service/img/user_unknown.png
 insultPoints:0
+isaname:<img src="../Gpt3.png"/>
 isanumber:false
-it:what
+it:right hand
 jsenabled:true
 lastname:what
 latitude:which
@@ -77,15 +79,17 @@ she:who
 sign:which
 sister:who
 son:who
+startupSentence:Please wait, I will analyse things in my field of view.
 state:which
 status:what
 street:which
 them:who
 there:where
-topic:unknown
+topic:default
 town:which
 userDescription:no personal description
 voicemailnumber:unknown
 wake.start:1715487047667
 we:who
 wife:who
+yoloReturn:

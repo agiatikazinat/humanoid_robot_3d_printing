@@ -6,7 +6,7 @@ def bookcat():
   i01.finishedGesture() 
 
 def bookcatYes():
-  print "book cat yes"
+  print("book cat yes")
   sleep(2)
   i01.speakBlocking("Tell me. turn the page, when you want me to read the next page, or say. stop reading")
   # #i01.speakBlocking(u"Скажите мне. Повернуть страницу, когда вы хотите, чтобы я прочитал следующую страницу или скажите. Прекратить чтение")
@@ -16,7 +16,7 @@ def bookcatYes():
   i01.finishedGesture()
 
 def bookcatNo():
-  print "book cat no"
+  print("book cat no")
   sleep(2)
   i01.speakBlocking("too bad, I like this book")
   # #i01.speakBlocking(u"Слишком плохо, мне нравится эта книга")

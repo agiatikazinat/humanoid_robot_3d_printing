@@ -5,7 +5,7 @@
 #########################################
 # uncomment for virtual hardware
 # virtual = True
-
+import time
 # crawlers publish documents
 def onDocument(doc):
     print(doc)
@@ -22,6 +22,6 @@ csvconnector.addListener("publishDocument","python","onDocument")
 # start crawling
 csvconnector.startCrawling()
 
-sleep(5)
+time.sleep(5)
 
 csvconnector.stopCrawling()

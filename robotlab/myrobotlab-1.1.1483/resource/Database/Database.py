@@ -15,7 +15,7 @@ database.jdbcUser="user"
 database.jdbcPassword="password"
 
 if not virtual:
-  print database.connect()
+  print(database.connect())
   resultSet  = database.executeQuery("SELECT * FROM YOUR_TABLE")
   while (resultSet.next()):
-    print resultSet.getString("id")
+    print(resultSet.getString("id"))

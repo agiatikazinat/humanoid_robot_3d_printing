@@ -2,6 +2,7 @@
 # DatabaseConnector.py
 # more info @: http://myrobotlab.org/service/DatabaseConnector
 #########################################
+import time
 
 database = runtime.start("database","DatabaseConnector")
 database.setDriver("com.mysql.jdbc.Driver")
@@ -21,5 +22,5 @@ database.setSql("select actor_id, first_name, last_name from actor")
 if not ('virtual' in globals() and virtual):
 # start crawling
   database.startCrawling()
-  sleep(5)
+  time.sleep(5)
   database.stopCrawling()
