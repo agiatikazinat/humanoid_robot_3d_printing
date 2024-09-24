@@ -1,6 +1,0 @@
-!!org.myrobotlab.service.config.SolrConfig
-embedded: true
-listeners: null
-peers: null
-solrUrl: http://localhost:8983/solr
-type: Solr

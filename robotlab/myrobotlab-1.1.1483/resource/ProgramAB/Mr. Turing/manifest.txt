@@ -1,3 +1,0 @@
-description=Mr. Turing,  I pitty the fool...
-locale=en-US
-image=bot.png

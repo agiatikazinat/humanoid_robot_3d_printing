@@ -1,5 +1,0 @@
-name:human
-userDescription:Pas de fiche personnelle
-firstinit:unknown
-lockInsult:off
-img:../service/img/user_unknown.png

@@ -1,3 +1,0 @@
-description=A large encyclopedia of short definitions
-locale=en-US
-image=bot.png

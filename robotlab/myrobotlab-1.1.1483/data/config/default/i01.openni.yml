@@ -1,5 +1,0 @@
-!!org.myrobotlab.service.config.OpenNiConfig
-listeners: [
-  ]
-peers: null
-type: OpenNi

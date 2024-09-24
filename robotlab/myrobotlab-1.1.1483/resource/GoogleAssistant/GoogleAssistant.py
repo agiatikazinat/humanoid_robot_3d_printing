@@ -1,2 +1,0 @@
-# TODO: Implement this script fpr
-googleassistant = runtime.start("googleassistant","GoogleAssistant")

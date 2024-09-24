@@ -1,7 +1,0 @@
-!!org.myrobotlab.service.config.GoogleSearchConfig
-listeners: null
-lowerCase: null
-maxImages: 3
-peers: null
-saveSearchToFile: false
-type: GoogleSearch

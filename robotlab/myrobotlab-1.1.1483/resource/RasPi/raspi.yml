@@ -1,5 +1,0 @@
-!!org.myrobotlab.service.config.RasPiConfig
-listeners: null
-peers: null
-pollRateHz: 1
-type: RasPi

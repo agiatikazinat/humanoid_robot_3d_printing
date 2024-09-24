@@ -1,5 +1,0 @@
-!!org.myrobotlab.service.config.SecurityConfig
-listeners: [
-  ]
-peers: null
-type: Security
